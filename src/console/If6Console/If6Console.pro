@@ -9,7 +9,6 @@ include(AppVer.pri)
 include(WinTarget.pri)
 include(../../useBase.pri)
 include(../../useCore.pri)
-#INCLUDEPATH *= ../../libs/eirBase6
 message(INCLUDEPATH = $$INCLUDEPATH)
 message(LIBS = $$LIBS)
 message(QMAKE_TARGET_COMPANY = $$QMAKE_TARGET_COMPANY)
