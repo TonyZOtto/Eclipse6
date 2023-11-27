@@ -16,6 +16,7 @@ QMAKE_TARGET_TRADEMARKS         = $$EIRVER_TRADEMARKS
 QMAKE_MANIFEST                  = $$EIRVER_MANIFEST
 RC_CODEPAGE                     = $$EIRVER_CODEPAGE
 RC_LANG                         = $$EIRVER_LANG
+RC_ICONS                        = $$EIRVER_ICON
 
 
 
