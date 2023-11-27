@@ -65,6 +65,22 @@ bool VersionInfo::isNull(void) const
     return number().isNull();
 }
 
+QString VersionInfo::string(const Options opts) const
+{
+    QString result;
+    if (opts & Dotted)
+        result = dottedString();
+    else
+    {
+        if (opts & ShowV)
+            result = "v";
+        result += toString();
+        if (opts & ShowQWord)
+            result += QString(" [%1]").arg(toQWord(), 16, 16, QChar('0'));
+    }
+    return result;
+}
+
 void VersionInfo::set(const QString & s)
 {
     QStringList qsl = s.split('.');
@@ -108,30 +124,11 @@ QString VersionInfo::toString(void) const
 {
     QString sBranch, sRelease;
     if (branch())
-        sBranch = QString("+B%1").arg(branch(), 2, 10, QChar('0'));
-    if (release() > 0 && release() < 25)
-        sRelease = QChar(0x40 + release());
-    else if (release() > 24 && release() < 50)
-        sRelease = QString("X").append(QChar(0x40 + release()-24));
-    else if (release() > 49 && release() < 75)
-        sRelease = QString("Y").append(QChar(0x40 + release()-49));
-    else if (release() > 74 && release() < 100)
-        sRelease = QString("Z").append(QChar(0x40 + release()-74));
-    else if (release() >= 0xA0 && release() <= 0xA9)
-        sRelease = QString("-Alpha%1").arg(release() - 0xA0);
-    else if (release() >= 0xB0 && release() <= 0xB9)
-        sRelease = QString("-Beta%1").arg(release() - 0xB0);
-    else if (release() >= 0xC0 && release() <= 0xC9)
-        sRelease = QString("-RC%1").arg(release() - 0xC0);
-    else if (release() >= 0xF1 && release() <= 0xF9)
-        sRelease = QString("-Final%1").arg(release() - 0xF0);
-    else if (release() != 0xF0 && release() != 0xFF)
-        sRelease = QString("-%1").arg(release());
-    return QString("v%1.%2%3%4 [%5]").arg(major())
+        sBranch = QString("+%1").arg(branch(), 2, 10, QChar('0'));
+    return QString("%1.%2%3%4").arg(major())
                                 .arg(minor(), 2, 10, QChar('0'))
                                 .arg(sBranch)
-                                .arg(sRelease)
-                                .arg(toQWord(), 16, 16, QChar('0'));
+                                .arg(sRelease));
 }
 
 QString VersionInfo::dottedString(void) const
@@ -139,6 +136,30 @@ QString VersionInfo::dottedString(void) const
     return QString("%1.%2.%3.%4")
         .arg(major()).arg(minor())
         .arg(branch()).arg(release());
+}
+
+QString VersionInfo::releaseString(const Options opts) const
+{
+    QString result;
+    if (release() > 0 && release() < 25)
+        result = QChar(0x40 + release());
+    else if (release() > 24 && release() < 50)
+        result = QString("X").append(QChar(0x40 + release()-24));
+    else if (release() > 49 && release() < 75)
+        result = QString("Y").append(QChar(0x40 + release()-49));
+    else if (release() > 74 && release() < 100)
+        result = QString("Z").append(QChar(0x40 + release()-74));
+    else if (release() >= 0xA0 && release() <= 0xA9)
+        result = QString("-Alpha%1").arg(release() - 0xA0);
+    else if (release() >= 0xB0 && release() <= 0xB9)
+        result = QString("-Beta%1").arg(release() - 0xB0);
+    else if (release() >= 0xC0 && release() <= 0xC9 && ( ! opts & NoRelease))
+        result = QString("-RC%1").arg(release() - 0xC0);
+    else if (release() >= 0xF1 && release() <= 0xF9 && ( ! opts & NoRelease))
+        result = QString("-Final%1").arg(release() - 0xF0 && ( ! opts & NoRelease));
+    else if (release() != 0xF0 && release() != 0xFF)
+        result = QString("-%1").arg(release());
+    return result;
 }
 
 QWORD VersionInfo::toQWord() const

@@ -21,6 +21,15 @@ public:
         Release,
         $Size
     };
+    enum Option
+    {
+        $None       = 0,
+        ShowV       = 0x00000001,
+        NoRelease   = 0x00000040,
+        ShowQWord   = 0x00000080,
+        Dotted      = 0x00000100,
+    };
+    Q_ENUM(Options, Option);
 
 public:
     VersionInfo(void);
@@ -40,8 +49,7 @@ public: // const
     int branch() const;
     int release() const;
     bool isNull() const;
-    QString toString(void) const;
-    QString dottedString(void) const;
+    QString string(const Options opts=$None) const;
     QWORD toQWord(void) const;
     QVersionNumber number() const;
     QDateTime dateTime() const;
@@ -54,6 +62,11 @@ public: // const
     QStringList noticeList() const;
     void check(quint32 key) const;
     void setApp(QCoreApplication *pApp) const;
+
+private:
+    QString toString() const;
+    QString dottedString() const;
+    QString releaseString(const Options opts) const;
 
 public: // non-const
     void major(const int i);

@@ -50,5 +50,8 @@ compile_commands.json
 
 # QtCreator local machine specific files for imported projects
 *creator.user*
-
+*.pro.user
 *_qmlcache.qrc
+*.stash
+*.exe
+*_resource.rc

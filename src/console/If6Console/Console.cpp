@@ -5,3 +5,8 @@ Console::Console(int &argc, char **argv)
 {
 
 }
+
+void Console::start()
+{
+    qInfo() << Q_FUNC_INFO;
+}
