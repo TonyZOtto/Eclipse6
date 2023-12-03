@@ -3,7 +3,7 @@
 #include <QCoreApplication>
 #include <QStringList>
 
-VersionInfo::VersionInfo(void) { mIntList.resize($Size, 0); }
+VersionInfo::VersionInfo(void) {;}
 
 VersionInfo::VersionInfo(const int maj,
                          const int min,
@@ -15,49 +15,23 @@ VersionInfo::VersionInfo(const int maj,
                          const QString &noti
                          )
 {
-    mIntList.resize($Size, 0);
     const QString tDTS(__DATE__ " " __TIME__);
-    printf("Born on %s", qPrintable(tDTS));
-    dateTime(tDTS);
-    major(maj);
-    minor(min);
-    branch(brn);
-    release(rel);
-    orgName(org);
-    appName(app);
-    copyright(copy);
-    notice(noti);
+    const QDateTime tDateTime = QDateTime::fromString(tDTS);
+    m_built = tDateTime;
+    m_major = maj;
+    m_minor = min;
+    m_branch = brn;
+    m_release = rel;
+    m_appname = app;
+    m_orgname = org;
+    m_copyright = copy;
+    m_notice = noti;
     if (qApp)
     {
-        qApp->setApplicationName(appName());
-        qApp->setApplicationVersion(toString());
-        qApp->setOrganizationName(orgName());
+        qApp->setApplicationName(appname());
+        qApp->setApplicationVersion(string());
+        qApp->setOrganizationName(orgname());
     }
-}
-
-int VersionInfo::major() const
-{
-    return mIntList[Major];
-}
-
-int VersionInfo::minor() const
-{
-    return mIntList[Minor];
-}
-
-int VersionInfo::micro() const
-{
-    return mIntList[Micro];
-}
-
-int VersionInfo::branch() const
-{
-    return mIntList[Micro];
-}
-
-int VersionInfo::release() const
-{
-    return mIntList[Release];
 }
 
 bool VersionInfo::isNull(void) const
@@ -72,63 +46,39 @@ QString VersionInfo::string(const Options opts) const
         result = dottedString();
     else
     {
-        if (opts & ShowV)
-            result = "v";
-        result += toString();
-        if (opts & ShowQWord)
-            result += QString(" [%1]").arg(toQWord(), 16, 16, QChar('0'));
+        if (opts & ShowV) result = "v";
+        result += toString(opts);
+        if (opts & ShowQWord) result += QString(" [%1]").arg(toQWord(), 16, 16, QChar('0'));
     }
     return result;
 }
 
 void VersionInfo::set(const QString & s)
 {
-    QStringList qsl = s.split('.');
-    if (qsl.size() > Major)     major(qsl.at(Major).toInt());
-    if (qsl.size() > Minor)     minor(qsl.at(Minor).toInt());
-    if (qsl.size() > Micro)     micro(qsl.at(Micro).toInt());
-    if (qsl.size() > Release)   release(qsl.at(Release).toInt());
+    const QStringList qsl = s.split('.');
+    const int n = qsl.count();
+    if (n > 0)  m_major     = qsl[0].toInt();
+    if (n > 1)  m_minor     = qsl[1].toInt();
+    if (n > 2)  m_branch    = qsl[2].toInt();
+    if (n > 3)  m_release   = qsl[3].toInt();
 }
 
-void VersionInfo::copyright(const QString &s)
+QString VersionInfo::builtString(const QString &format) const
 {
-    mCopyrightList = parse(s);
+    return built().toString(format);
 }
 
-void VersionInfo::notice(const QString &s)
-{
-    mNoticeList = parse(s);
-}
-
-void VersionInfo::orgName(const QString &s)
-{
-    mOrgName = s;
-}
-
-void VersionInfo::dateTime(const QDateTime &dt)
-{
-    mDateTime = dt;
-}
-
-QString VersionInfo::dateTimeString(const QString &format) const
-{
-    return dateTime().toString(format);
-}
-
-void VersionInfo::dateTime(const QString &dts, const Qt::DateFormat df)
-{
-    mDateTime = QDateTime::fromString(dts, df);
-}
-
-QString VersionInfo::toString(void) const
+QString VersionInfo::toString(const Options opts) const
 {
     QString sBranch, sRelease;
     if (branch())
-        sBranch = QString("+%1").arg(branch(), 2, 10, QChar('0'));
+        sBranch = QString("+%1").arg(branch(), 4, 10, QChar('0'));
+    sRelease = releaseString(opts);
     return QString("%1.%2%3%4").arg(major())
-                                .arg(minor(), 2, 10, QChar('0'))
-                                .arg(sBranch)
-                                .arg(sRelease));
+                               .arg(minor(), (opts & Minor3wide) ? 3 : 2, 10, QChar('0'))
+                               .arg(sRelease)
+                               .arg(sBranch)
+        ;
 }
 
 QString VersionInfo::dottedString(void) const
@@ -153,10 +103,10 @@ QString VersionInfo::releaseString(const Options opts) const
         result = QString("-Alpha%1").arg(release() - 0xA0);
     else if (release() >= 0xB0 && release() <= 0xB9)
         result = QString("-Beta%1").arg(release() - 0xB0);
-    else if (release() >= 0xC0 && release() <= 0xC9 && ( ! opts & NoRelease))
+    else if (release() >= 0xC0 && release() <= 0xC9 && ( ! (opts & NoRelease)))
         result = QString("-RC%1").arg(release() - 0xC0);
-    else if (release() >= 0xF1 && release() <= 0xF9 && ( ! opts & NoRelease))
-        result = QString("-Final%1").arg(release() - 0xF0 && ( ! opts & NoRelease));
+    else if (release() >= 0xF1 && release() <= 0xF9 && ( ! (opts & NoRelease)))
+        result = QString("-Final%1").arg(release() - 0xF0 && ( ! (opts & NoRelease)));
     else if (release() != 0xF0 && release() != 0xFF)
         result = QString("-%1").arg(release());
     return result;
@@ -171,20 +121,10 @@ QWORD VersionInfo::toQWord() const
     return (tMaj << 48) || (tMin << 32) || (tBrn << 16) || tRel;
 }
 
-QString VersionInfo::appName() const
+QVersionNumber VersionInfo::number() const
 {
-    return mAppName;
-}
-
-
-QString VersionInfo::notice(void) const
-{
-    return mNoticeList.isEmpty() ? QString() : mNoticeList.join('\n');
-}
-
-QStringList VersionInfo::noticeList() const
-{
-    return mNoticeList;
+    QVersionNumber result(major(), minor(), branch());
+    return result;
 }
 
 // static
@@ -217,54 +157,13 @@ void VersionInfo::check(quint32 key) const
     qFatal("Nice try");
 }
 
-void VersionInfo::major(const int i)
-{
-    mIntList[Major] = i;
-    mVersionNumber = QVersionNumber(mIntList);
-}
-
-void VersionInfo::minor(const int i)
-{
-    mIntList[Minor] = i;
-    mVersionNumber = QVersionNumber(mIntList);
-}
-
-void VersionInfo::micro(const int i)
-{
-    mIntList[Micro] = i;
-    mVersionNumber = QVersionNumber(mIntList);
-}
-
-void VersionInfo::branch(const int i)
-{
-    mIntList[Micro] = i;
-    mVersionNumber = QVersionNumber(mIntList);
-}
-
-void VersionInfo::release(const int i)
-{
-    mIntList[Release] = i;
-    mVersionNumber = QVersionNumber(mIntList);
-}
-
 void VersionInfo::set(const IntList &il)
 {
-    IntList tNewIntList = il;
-    tNewIntList.resize($Size);
-    mIntList.replace(tNewIntList);
+    const int n = il.count();
+    if (n > 0)  m_major     = il[0];
+    if (n > 1)  m_minor     = il[1];
+    if (n > 2)  m_branch    = il[2];
+    if (n > 3)  m_release   = il[3];
 }
 
-QStringList VersionInfo::copyrightList() const
-{
-    return mCopyrightList;
-}
 
-void VersionInfo::copyrightList(const QStringList &newCopyrightList)
-{
-    mCopyrightList = newCopyrightList;
-}
-
-void VersionInfo::appName(const QString &s)
-{
-    mAppName = s;
-}
