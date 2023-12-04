@@ -1,10 +1,6 @@
 # {Eclipse6}/root/src/console/If6Console/WinTarget.pri
 message(/root/src/console/If6Console/WinTarget.pri)
 
-VER_MAJ = $$EIRVER_MAJOR
-VER_MIN = $$EIRVER_MINOR
-VER_PAT = $$EIRVER_BRANCH
-
 QMAKE_TARGET_COMPANY            = $$EIRVER_COMPANY
 QMAKE_TARGET_PRODUCT            = $$EIRVER_PRODUCT
 QMAKE_TARGET_DESCRIPTION        = $$EIRVER_DESCRIPTION

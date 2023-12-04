@@ -3,7 +3,21 @@
 #include <QCoreApplication>
 #include <QStringList>
 
-VersionInfo::VersionInfo(void) {;}
+#include "../../version.h"
+
+VersionInfo::VersionInfo(void)
+{
+    setBuilt();
+    m_major = VER_MAJOR;
+    m_minor = VER_MINOR;
+    m_branch = VER_BRANCH;
+    m_release = VER_RELEASE;
+    m_orgname = VER_ORGNAME;
+    m_copyright = VER_COPYRIGHT;
+    m_comment = VER_COMMENT;
+    //! note: requires m_appname, etc from application
+    //! todo: trademarks, trunk, product, filename, winfiletype, filedesc
+}
 
 VersionInfo::VersionInfo(const int maj,
                          const int min,
@@ -13,19 +27,18 @@ VersionInfo::VersionInfo(const int maj,
                          const QString &app,
                          const QString &copy,
                          const QString &noti
-                         )
+                         , const QString &comm)
 {
-    const QString tDTS(__DATE__ " " __TIME__);
-    const QDateTime tDateTime = QDateTime::fromString(tDTS);
-    m_built = tDateTime;
+    setBuilt();
     m_major = maj;
     m_minor = min;
     m_branch = brn;
     m_release = rel;
     m_appname = app;
     m_orgname = org;
-    m_copyright = copy;
-    m_notice = noti;
+    m_copyright = parse(copy);
+    m_notice = parse(noti);
+    m_comment = parse(comm);
     if (qApp)
     {
         qApp->setApplicationName(appname());
@@ -61,6 +74,13 @@ void VersionInfo::set(const QString & s)
     if (n > 1)  m_minor     = qsl[1].toInt();
     if (n > 2)  m_branch    = qsl[2].toInt();
     if (n > 3)  m_release   = qsl[3].toInt();
+}
+
+void VersionInfo::setBuilt()
+{
+    const QString tDTS(__DATE__ " " __TIME__);
+    const QDateTime tDateTime = QDateTime::fromString(tDTS);
+    m_built = tDateTime;
 }
 
 QString VersionInfo::builtString(const QString &format) const
@@ -128,16 +148,20 @@ QVersionNumber VersionInfo::number() const
 }
 
 // static
-QStringList VersionInfo::parse(const QString &s)
+QString VersionInfo::parse(const QString &s)
 {
-    QStringList result;
-    QString tString(s);
-    const QString tTrademark(QChar(2122));
-    const QString tCopyright(QChar(89));
+    QString result(s);
+    const QString tTrademark(QChar(0x2122));
+    const QString tCopyright(QChar(0x00A9));
     const QString tLineDelimiter("\\\\");
-    tString.replace("\\tm\\", tTrademark);
-    tString.replace("\\c\\", tCopyright);
-    result = tString.split(tLineDelimiter);
+#ifdef Q_OS_WINDOWS
+    const QString tLocalDelimeter("\r\n");
+#else
+    const QString tLocalDelimeter("\n");
+#endif
+    result.replace("\\tm\\", tTrademark);
+    result.replace("\\c\\", tCopyright);
+    result.replace(tLineDelimiter, tLocalDelimeter);
     qDebug() << Q_FUNC_INFO << s << result;
     return result;
 }

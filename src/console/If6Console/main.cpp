@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
     VersionInfo v(VER_MAJOR, VER_MINOR, VER_BRANCH, VER_RELEASE,
-                  VER_APPNAME, VER_ORGNAME, VER_COPYRIGHT);
+                  VER_APPNAME, VER_ORGNAME, VER_COPYRIGHT, VER_COMMENT);
     Console a(argc, argv);
     a.setApplicationName(VER_APPNAME);
     a.setApplicationVersion(v.string());

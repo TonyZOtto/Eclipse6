@@ -1,15 +1,18 @@
 # {Eclipse6}/root/src/console/If6Console/If6Console.pri
 message(/root/src/console/If6Console/If6Console.pri)
 
-TEMPLATE = app
 QT = core
+TEMPLATE = app
+TARGET = IfConsole
 CONFIG += c++17 cmdline
 
 include(../console.pri)
+include(../../version.pri)
+include(../../DESTDIR.pri)
 include(AppVer.pri)
 include(WinTarget.pri)
-#include(../../useBase.pri)
-#include(../../useCore.pri)
+include(../../useBase.pri)
+include(../../useCore.pri)
 
 message(LIBDIR = $$LIBDIR)
 message(INCLUDEPATH = $$INCLUDEPATH)

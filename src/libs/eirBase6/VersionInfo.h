@@ -1,5 +1,6 @@
 //!file {Eclipse6}/root/src/libs/eirBase6/VersionInfo.h Manage version numbers; wraps QVersionNumber
 #pragma once
+#include "eirBase6.h"
 
 #include <QObject>
 \
@@ -10,7 +11,7 @@
 
 #include "Types.h"
 
-class VersionInfo : public QObject
+class EIRBASE6_EXPORT VersionInfo : public QObject
 {
     Q_GADGET
 public:
@@ -23,8 +24,8 @@ public:
         ShowQWord   = 0x00000080,
         Dotted      = 0x00000100,
     };
-    Q_DECLARE_FLAGS(Options, Option);
-    Q_FLAGS(Options);
+    Q_DECLARE_FLAGS(Options, Option)
+    Q_FLAGS(Options)
 
 public:
     VersionInfo(void);
@@ -35,7 +36,8 @@ public:
                 const QString &org=QString(),
                 const QString &app=QString(),
                 const QString &copy=QString(),
-                const QString &noti=QString());
+                const QString &noti=QString(),
+                const QString &comm=QString());
 
 public: // const
     bool isNull() const;
@@ -55,13 +57,15 @@ public: // non-const
 
 
 
+
 private:
+    void setBuilt();
     QString toString(const Options opts) const;
     QString dottedString() const;
     QString releaseString(const Options opts) const;
 
 private: // static
-    static QStringList parse(const QString &s);
+    static QString parse(const QString &s);
 
     // ===================== PROPERTIES ====================
 private:
@@ -73,6 +77,7 @@ private:
     QString m_orgname;
     QString m_copyright;
     QString m_notice;
+    QString m_comment;
     QDateTime m_built;
     Q_PROPERTY(int major READ major CONSTANT FINAL)
     Q_PROPERTY(int minor READ minor CONSTANT FINAL)
@@ -82,6 +87,7 @@ private:
     Q_PROPERTY(QString orgname READ orgname CONSTANT FINAL)
     Q_PROPERTY(QString copyright READ copyright CONSTANT FINAL)
     Q_PROPERTY(QString notice READ notice CONSTANT FINAL)
+    Q_PROPERTY(QString comment READ comment CONSTANT FINAL)
     Q_PROPERTY(QDateTime built READ built CONSTANT FINAL)
     int major() const
     {
@@ -114,6 +120,10 @@ private:
     QString notice() const
     {
         return m_notice;
+    }
+    QString comment() const
+    {
+        return m_comment;
     }
     QDateTime built() const
     {

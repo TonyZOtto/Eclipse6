@@ -1,9 +1,16 @@
-QT -= gui
+# {Eclipse6}/root/src/console/If6Console/If6Console.pri
+message(/root/src/console/If6Console/If6Console.pri)
 
+QT -= gui
 TEMPLATE = lib
+TARGET = eirBase
+CONFIG += c++17
 DEFINES += EIRBASE6_LIBRARY
 
-CONFIG += c++17
+include(../../version.pri)
+include(../../DESTDIR.pri)
+message(DESTDIR = $$DESTDIR)
+message(TARGET = $$TARGET)
 
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
