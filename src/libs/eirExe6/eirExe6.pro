@@ -1,7 +1,7 @@
 # {Eclipse6}/root/src/libs/eirBase6/eirExe6.pri
 message(/root/src/libs/eirBase6/eirExe6.pri)
 
-QT -= gui
+QT += core gui widgets
 TEMPLATE = lib
 TARGET = eirExe
 CONFIG += c++17
@@ -19,6 +19,11 @@ SOURCES += \
     CommandLine.cpp \
     ConsoleApp.cpp \
     ConsoleIO.cpp \
+    ConsoleMessage.cpp \
+    ConsoleMessageWidget.cpp \
+    ConsoleWindow.cpp \
+    ConsoleWindowApp.cpp \
+    ConsoleWindowAppMain.cpp \
     ExeSupport.cpp \
     eirExe6.cpp
 
@@ -28,6 +33,11 @@ HEADERS += \
     CommandLine.h \
     ConsoleApp.h \
     ConsoleIO.h \
+    ConsoleMessage.h \
+    ConsoleMessageWidget.h \
+    ConsoleWindow.h \
+    ConsoleWindowApp.h \
+    ConsoleWindowAppMain.h \
     ExeSupport.h \
     eirExe_global.h \
     eirExe6.h
