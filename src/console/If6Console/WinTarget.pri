@@ -1,5 +1,5 @@
 # {Eclipse6}/root/src/console/If6Console/WinTarget.pri
-message(/root/src/console/If6Console/WinTarget.pri)
+message(------------/src/console/If6Console/WinTarget.pri)
 
 QMAKE_TARGET_COMPANY            = $$EIRVER_COMPANY
 QMAKE_TARGET_PRODUCT            = $$EIRVER_PRODUCT

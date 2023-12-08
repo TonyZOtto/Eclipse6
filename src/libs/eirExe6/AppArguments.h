@@ -4,11 +4,16 @@
 
 #include <QObject>
 
+class ExeSupport;
+
 class EIREXE_EXPORT AppArguments : public QObject
 {
     Q_OBJECT
 public:
-    explicit AppArguments(QObject *parent = nullptr);
+    explicit AppArguments(ExeSupport *parent = nullptr);
 
 signals:
+
+private:
+    ExeSupport * mpSupport=nullptr;
 };

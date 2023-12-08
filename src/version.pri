@@ -1,5 +1,5 @@
 # {Eclipse6}/src/version.pri
-message(/src/version.pri)
+message(------------/src/version.pri)
 
 EIRVER_MAJOR        = 6
 EIRVER_MINOR        = 90

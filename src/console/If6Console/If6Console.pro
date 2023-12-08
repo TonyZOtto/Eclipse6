@@ -1,5 +1,5 @@
 # {Eclipse6}/root/src/console/If6Console/If6Console.pri
-message(/root/src/console/If6Console/If6Console.pri)
+message(****/src/console/If6Console/If6Console.pro)
 
 QT = core
 TEMPLATE = app
@@ -13,6 +13,7 @@ include(AppVer.pri)
 include(WinTarget.pri)
 include(../../useBase.pri)
 include(../../useCore.pri)
+include(../../useExe.pri)
 
 message(LIBDIR = $$LIBDIR)
 message(INCLUDEPATH = $$INCLUDEPATH)
@@ -33,13 +34,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 SOURCES += \
-        Console.cpp \
+        IfConsole.cpp \
         main.cpp
 
 
 HEADERS += \
     ../../version.h \
-    Console.h \
+    IfConsole.h \
     version.h
 
 DISTFILES += \

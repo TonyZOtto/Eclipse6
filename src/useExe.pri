@@ -2,5 +2,5 @@
 INCLUDEPATH *= $$LIBDIR/eirExe6
 LIBS *= -leirExe6
 LIBS *= -L$$DESTDIR
-message(/src/useExe.pri LIBS=$$LIBS)
+message(--------/src/useExe.pri LIBS=$$LIBS)
 

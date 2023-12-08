@@ -4,11 +4,16 @@
 
 #include <QObject>
 
+class ExeSupport;
+
 class EIREXE_EXPORT CommandLine : public QObject
 {
     Q_OBJECT
 public:
-    explicit CommandLine(QObject *parent = nullptr);
+    explicit CommandLine(ExeSupport *parent = nullptr);
 
 signals:
+
+private:
+    ExeSupport * mpSupport=nullptr;
 };

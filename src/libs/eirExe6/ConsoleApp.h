@@ -4,11 +4,20 @@
 
 #include <QObject>
 
-class EIREXE_EXPORT ConsoleApp : public QObject
+class QCoreApplication;
+
+#include "ExeSupport.h"
+class ConsoleIO;
+
+class EIREXE_EXPORT ConsoleApp : public ExeSupport
 {
     Q_OBJECT
 public:
-    explicit ConsoleApp(QObject *parent = nullptr);
+    explicit ConsoleApp(int argc, char *argv[], QObject *parent = nullptr);
 
 signals:
+
+private:
+    QCoreApplication * mpCoreApp=nullptr;
+    ConsoleIO * mpIO=nullptr;
 };

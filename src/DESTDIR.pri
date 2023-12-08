@@ -1,5 +1,5 @@
 # {Eclipse6}/src/DESTDIR.pri
-message(/src/DESTDIR.pri)
+message(========/src/DESTDIR.pri)
 
 OURDEST = "{bindir}/{bldcfg}{osbits}-Qt{qtmajor}{cvmajor}-{eirver}"
 message(OURDEST = $$OURDEST)
