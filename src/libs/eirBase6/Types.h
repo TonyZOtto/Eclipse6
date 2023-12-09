@@ -11,4 +11,6 @@ typedef qint16      SWORD;
 typedef qint32      SDWORD;
 typedef qint64      SQWORD;
 
+typedef QWORD       EpochMilliseconds;
+
 typedef QList<int> IntList;

@@ -14,10 +14,12 @@ message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
 SOURCES += \
+    MillisecondTime.cpp \
     VersionInfo.cpp \
     eirBase6.cpp
 
 HEADERS += \
+    MillisecondTime.h \
     Property.h \
     Types.h \
     VersionInfo.h \

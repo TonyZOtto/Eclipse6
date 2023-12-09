@@ -10,6 +10,8 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 include(../../version.pri)
 include(../../DESTDIR.pri)
+include(../libs.pri)
+include(../../useBase.pri)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
@@ -20,10 +22,11 @@ SOURCES += \
     ConsoleApp.cpp \
     ConsoleIO.cpp \
     ConsoleMessage.cpp \
+    ConsoleMessageDisplay.cpp \
     ConsoleMessageWidget.cpp \
-    ConsoleWindow.cpp \
     ConsoleWindowApp.cpp \
     ConsoleWindowAppMain.cpp \
+    ConsoleWindowMainWidget.cpp \
     ExeSupport.cpp \
     eirExe6.cpp
 
@@ -34,10 +37,11 @@ HEADERS += \
     ConsoleApp.h \
     ConsoleIO.h \
     ConsoleMessage.h \
+    ConsoleMessageDisplay.h \
     ConsoleMessageWidget.h \
-    ConsoleWindow.h \
     ConsoleWindowApp.h \
     ConsoleWindowAppMain.h \
+    ConsoleWindowMainWidget.h \
     ExeSupport.h \
     eirExe_global.h \
     eirExe6.h

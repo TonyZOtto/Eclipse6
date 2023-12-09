@@ -10,6 +10,7 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 include(../../version.pri)
 include(../../DESTDIR.pri)
+include(../libs.pri)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
