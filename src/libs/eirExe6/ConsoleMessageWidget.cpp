@@ -1,5 +1,10 @@
 #include "ConsoleMessageWidget.h"
 
-ConsoleMessageWidget::ConsoleMessageWidget(QWidget *parent)
+ConsoleMessageWidget::ConsoleMessageWidget(const ConsoleMessage msg,
+                                           QWidget *parent)
     : QWidget{parent}
-{}
+    , cmMessage(msg)
+{
+    setObjectName("ConsoleMessageWidget");
+
+}

@@ -1,30 +1,26 @@
+//!file {Eclipse6}/root/src/libs/eirExe6/CommandLine.h Parses Command Line for ExeSupport
 #pragma once
+#include "eirExe6.h"
 
 #include <QObject>
 
 #include <MillisecondTime.h>
+#include <Types.h>
 
-class ConsoleMessage : public QObject
+class ConsoleMessage
 {
     Q_GADGET
 public:
-    enum ClassFlag
-    {
-        $null = 0,
-        InfoTrivia      = 0x0000001,
-        Shutdown        = 0x8000000,
-    };
-    Q_DECLARE_FLAGS(ClassFlags, ClassFlag)
-    Q_FLAGS(ClassFlags)
 
 
 public:
-    explicit ConsoleMessage(QObject *parent = nullptr);
+    explicit ConsoleMessage();
 
 signals:
 
     // =================== PROPERTIES ===================
 private:
-    ClassFlags mFlags;
+    /*Log::Level*/ int mLevel;
     MillisecondTime mCreatedMst;
+
 };

@@ -1,10 +1,16 @@
+//!file {Eclipse6}/root/src/libs/eirExe6/ConsoleWindowAppMain.h Provides a QMainWindow for a ConsoleWindowApp
 #pragma once
+#include "eirExe6.h"
 
 #include <QMainWindow>
 
-#include "ConsoleWindowMainWidget.h"
+class QVBoxLayout;
+class QTabBar;
+class QStackedWidget;
 
-class ConsoleWindowAppMain : public QMainWindow
+class ConsoleMessageDisplay;
+
+class EIREXE_EXPORT ConsoleWindowAppMain : public QMainWindow
 {
     Q_OBJECT
 public:
@@ -12,6 +18,13 @@ public:
 
 signals:
 
+public slots:
+    void setupUI();
+    void tabChanged();
+
 private:
-    ConsoleWindowMainWidget * mpMainWidget=nullptr;
+    QVBoxLayout * mpVBoxLayout=nullptr;
+    QTabBar * mpTabs=nullptr;
+    QStackedWidget * mpStack=nullptr;
+    ConsoleMessageDisplay * mpEmptyDisplay;
 };

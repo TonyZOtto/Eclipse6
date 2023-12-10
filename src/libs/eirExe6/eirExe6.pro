@@ -26,7 +26,6 @@ SOURCES += \
     ConsoleMessageWidget.cpp \
     ConsoleWindowApp.cpp \
     ConsoleWindowAppMain.cpp \
-    ConsoleWindowMainWidget.cpp \
     ExeSupport.cpp \
     eirExe6.cpp
 
@@ -41,7 +40,6 @@ HEADERS += \
     ConsoleMessageWidget.h \
     ConsoleWindowApp.h \
     ConsoleWindowAppMain.h \
-    ConsoleWindowMainWidget.h \
     ExeSupport.h \
     eirExe_global.h \
     eirExe6.h

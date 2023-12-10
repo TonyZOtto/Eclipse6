@@ -1,17 +1,20 @@
+//!file {Eclipse6}/root/src/libs/eirExe6/ConsoleMessageWidget.h Displays a ConsoleMessage
 #pragma once
+#include "eirExe6.h"
 
 #include <QWidget>
 
 #include "ConsoleMessage.h"
 
-class ConsoleMessageWidget : public QWidget
+class EIREXE_EXPORT ConsoleMessageWidget : public QWidget
 {
     Q_OBJECT
 public:
-    explicit ConsoleMessageWidget(QWidget *parent = nullptr);
+    explicit ConsoleMessageWidget(const ConsoleMessage msg,
+                                  QWidget *parent = nullptr);
 
 signals:
 
 private:
-    ConsoleMessage mMessage;
+    const ConsoleMessage cmMessage;
 };

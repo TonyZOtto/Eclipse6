@@ -2,7 +2,7 @@
 
 #include <ConsoleWindowAppMain.h>
 
-class EngineMainWindow : public QMainWindow
+class EngineMainWindow : public ConsoleWindowAppMain
 {
     Q_OBJECT
 
