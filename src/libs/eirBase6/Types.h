@@ -7,9 +7,11 @@
 typedef quint16     WORD;
 typedef quint32     DWORD;
 typedef quint64     QWORD;
+typedef quint128    OWORD;
 typedef qint16      SWORD;
 typedef qint32      SDWORD;
 typedef qint64      SQWORD;
+typedef qint128     SOWORD;
 
 typedef QWORD       EpochMilliseconds;
 

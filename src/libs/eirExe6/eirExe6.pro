@@ -1,5 +1,5 @@
-# {Eclipse6}/root/src/libs/eirBase6/eirExe6.pri
-message(/root/src/libs/eirBase6/eirExe6.pri)
+# {Eclipse6}/root/src/libs/eirBase6/eirExe6.pro
+message(===============/root/src/libs/eirBase6/eirExe6.pro)
 
 QT += core gui widgets
 TEMPLATE = lib
@@ -41,8 +41,8 @@ HEADERS += \
     ConsoleWindowApp.h \
     ConsoleWindowAppMain.h \
     ExeSupport.h \
-    eirExe_global.h \
-    eirExe6.h
+    eirExe6_global.h \
+    eirExe6.h \
 
 # Default rules for deployment.
 unix {

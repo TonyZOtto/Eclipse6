@@ -10,13 +10,15 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 include(../../version.pri)
 include(../../DESTDIR.pri)
+include(../libs.pri)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
 SOURCES += \
     MillisecondTime.cpp \
     VersionInfo.cpp \
-    eirBase6.cpp
+    eirBase6.cpp \
+    Uid.cpp
 
 HEADERS += \
     MillisecondTime.h \
@@ -24,7 +26,8 @@ HEADERS += \
     Types.h \
     VersionInfo.h \
     eirBase6_global.h \
-    eirBase6.h
+    eirBase6.h \
+    Uid.h
 
 # Default rules for deployment.
 unix {

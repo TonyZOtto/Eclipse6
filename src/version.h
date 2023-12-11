@@ -3,7 +3,7 @@
 
 #define VER_MAJOR           6
 #define VER_MINOR           90
-#define VER_BRANCH          0
+#define VER_BRANCH          12
 #define VER_RELEASE         1
 #define VER_TRUNK           "develop"
 #define VER_ORGNAME         "EclipseIR"

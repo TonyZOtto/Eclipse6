@@ -1,6 +1,7 @@
 #include "EngineMainWindow.h"
 
 #include <ConsoleWindowApp.h>
+#include <Log.h>
 
 int main(int argc, char *argv[])
 {
