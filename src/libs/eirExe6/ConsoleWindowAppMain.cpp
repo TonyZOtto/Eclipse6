@@ -1,8 +1,5 @@
 #include "ConsoleWindowAppMain.h"
 
-#include <QVBoxLayout>
-#include <QTabBar>
-#include <QStackedWidget>
 
 ConsoleWindowAppMain::ConsoleWindowAppMain(QWidget *parent)
     : QMainWindow{parent}
@@ -26,7 +23,7 @@ void ConsoleWindowAppMain::setupUI()
     Q_ASSERT_X(mpStack, "ConsoleWindowAppMain::setupUI()", "Invalid mpStack");
     mpVBoxLayout->addWidget(mpTabs);
     mpVBoxLayout->addWidget(mpStack);
-    setLayout(mpVBoxLayout);
+//    setLayout(mpVBoxLayout);
     connect(mpTabs, &QTabBar::currentChanged,
             this, &ConsoleWindowAppMain::tabChanged);
 }

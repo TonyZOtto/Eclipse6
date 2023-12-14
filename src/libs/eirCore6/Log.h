@@ -3,12 +3,19 @@
 #include "eirCore6.h"
 
 #include <QObject>
+#include <QMessageLogger>
 
 class EIRCORE6_EXPORT Log
 {
 
 public:
     Log();
+
+private:
+    //static QtMessageHandler logMessageHandler;
+    static void logMessageHandler(QtMsgType qmt,
+                                  const QMessageLogContext & context,
+                                  const QString & message);
 };
 
 #include "LogMacros.h"

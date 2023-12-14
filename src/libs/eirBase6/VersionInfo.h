@@ -3,7 +3,7 @@
 #include "eirBase6.h"
 
 #include <QObject>
-\
+
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QString>

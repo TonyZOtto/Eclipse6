@@ -2,10 +2,6 @@
 #pragma once
 #include "eirExe6.h"
 
-#include <QWidget>
-
-#include <QList>
-#include <QVBoxLayout>
 
 class ConsoleMessageWidget;
 

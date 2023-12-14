@@ -4,7 +4,7 @@
 
 #include <QObject>
 
-#include <MillisecondTime.h>
+#include <ExeSupport.h>
 #include <Uid.h>
 
 #include "VariableMap.h"
@@ -15,7 +15,7 @@ class EIRCORE6_EXPORT Message
 public:
     enum Level
     {
-        $null = 0,
+        $nullLevel = 0,
         Config,
         Detail,
         TDetail,
@@ -108,26 +108,90 @@ public:
         FormatPrintF    = 0x00000001,
         FormatArgs      = 0x00000002,
         FormatArgsPlus  = 0x00000004,
-        FormatReserved  = 0x00000008,
+        FormatStream    = 0x00000008,
     };
     Q_DECLARE_FLAGS(Flags, Flag)
     Q_FLAG(Flags)
 
 public:
     explicit Message();
+    Message(const Level level, const QString text, const Flags f=$nullFlag);
+    Message(const Level level, const QString format,
+            const QVariantList vars, const Flags f=$nullFlag);
+
+private:
+    void ctor();
+    virtual void formatMessage();
 
     // ====================== PROPERTIES ===================
 private:
     Uid m_MessageUid;
-    MillisecondTime m_CreatedTime;
-    Level m_Level;
-    Flags m_Flags;
+    QDateTime m_CreatedTime;
+    Level m_MsgLevel;
+    Flags m_MsgFlags;
     Uid m_SenderUid;
     Uid m_ReceiverUid;
-    MillisecondTime m_SentTime;
-    MillisecondTime m_ReceivedTime;
+    QDateTime m_SentTime;
+    QDateTime m_ReceivedTime;
     QString m_Text;
     QString m_Format;
+    QVariantList m_VariantList;
     VariableMap m_VariableMap;
+public:
+    Uid MessageUid() const
+    {
+        return m_MessageUid;
+    }
+    MillisecondTime CreatedTime() const
+    {
+        return m_CreatedTime;
+    }
+    Level MsgLevel() const
+    {
+        return m_MsgLevel;
+    }
+    Flags MsgFlags() const
+    {
+        return m_MsgFlags;
+    }
+    Uid SenderUid() const
+    {
+        return m_SenderUid;
+    }
+    Uid ReceiverUid() const
+    {
+        return m_ReceiverUid;
+    }
+    MillisecondTime SentTime() const
+    {
+        return m_SentTime;
+    }
+    MillisecondTime ReceivedTime() const
+    {
+        return m_ReceivedTime;
+    }
+    QString Text() const
+    {
+        return m_Text;
+    }
+    QString Format() const
+    {
+        return m_Format;
+    }
+    QVariantList VariantList() const
+    {
+        return m_VariantList;
+    }
 
+    Q_PROPERTY(Uid MessageUid READ MessageUid CONSTANT FINAL)
+    Q_PROPERTY(MillisecondTime CreatedTime READ CreatedTime CONSTANT FINAL)
+    Q_PROPERTY(Level MsgLevel READ MsgLevel CONSTANT FINAL)
+    Q_PROPERTY(Flags MsgFlags READ MsgFlags CONSTANT FINAL)
+    Q_PROPERTY(Uid SenderUid READ SenderUid CONSTANT FINAL)
+    Q_PROPERTY(Uid ReceiverUid READ ReceiverUid CONSTANT FINAL)
+    Q_PROPERTY(MillisecondTime SentTime READ SentTime CONSTANT FINAL)
+    Q_PROPERTY(MillisecondTime ReceivedTime READ ReceivedTime CONSTANT FINAL)
+    Q_PROPERTY(QString Text READ Text CONSTANT FINAL)
+    Q_PROPERTY(QString Format READ Format CONSTANT FINAL)
+    Q_PROPERTY(QVariantList VariantList READ VariantList CONSTANT FINAL)
 };

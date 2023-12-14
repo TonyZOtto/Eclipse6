@@ -8,7 +8,7 @@ EngineMainWindow::EngineMainWindow(QWidget *parent)
 {
     setObjectName("EngineMainWindow");
     showMaximized();
-    QTimer::singleShot(200, this, &EngineMainWindow::setupUI);
+    QTimer::singleShot(200, this, &ConsoleWindowAppMain::setupUI);
 }
 
 EngineMainWindow::~EngineMainWindow() {;}

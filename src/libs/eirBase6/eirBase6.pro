@@ -1,7 +1,7 @@
 # {Eclipse6}/root/src/libs/eirBase6/eirBase6.pri
 message(/root/src/libs/eirBase6/eirBase6.pri)
 
-QT -= gui
+QT *= core gui
 TEMPLATE = lib
 TARGET = eirBase
 CONFIG += c++17
@@ -15,13 +15,19 @@ message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
 SOURCES += \
+    AText.cpp \
+    BaseTime.cpp \
     MillisecondTime.cpp \
+    NanosecondTime.cpp \
     VersionInfo.cpp \
     eirBase6.cpp \
     Uid.cpp
 
 HEADERS += \
+    AText.h \
+    BaseTime.h \
     MillisecondTime.h \
+    NanosecondTime.h \
     Property.h \
     Types.h \
     VersionInfo.h \

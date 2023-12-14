@@ -1,7 +1,5 @@
 #include "ConsoleApp.h"
 
-#include <QCoreApplication>
-
 #include "ConsoleIO.h"
 
 ConsoleApp::ConsoleApp(int argc, char *argv[], QObject *parent)

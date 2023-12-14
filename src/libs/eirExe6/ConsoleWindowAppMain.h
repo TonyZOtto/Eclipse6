@@ -2,12 +2,6 @@
 #pragma once
 #include "eirExe6.h"
 
-#include <QMainWindow>
-
-class QVBoxLayout;
-class QTabBar;
-class QStackedWidget;
-
 class ConsoleMessageDisplay;
 
 class EIREXE_EXPORT ConsoleWindowAppMain : public QMainWindow
