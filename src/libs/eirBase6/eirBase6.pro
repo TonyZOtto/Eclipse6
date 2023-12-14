@@ -1,7 +1,7 @@
 # {Eclipse6}/root/src/libs/eirBase6/eirBase6.pri
 message(/root/src/libs/eirBase6/eirBase6.pri)
 
-QT -= gui
+QT *= core gui
 TEMPLATE = lib
 TARGET = eirBase
 CONFIG += c++17
@@ -10,21 +10,30 @@ DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs depr
 
 include(../../version.pri)
 include(../../DESTDIR.pri)
+include(../libs.pri)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
 SOURCES += \
+    AText.cpp \
+    BaseTime.cpp \
     MillisecondTime.cpp \
+    NanosecondTime.cpp \
     VersionInfo.cpp \
-    eirBase6.cpp
+    eirBase6.cpp \
+    Uid.cpp
 
 HEADERS += \
+    AText.h \
+    BaseTime.h \
     MillisecondTime.h \
+    NanosecondTime.h \
     Property.h \
     Types.h \
     VersionInfo.h \
     eirBase6_global.h \
-    eirBase6.h
+    eirBase6.h \
+    Uid.h
 
 # Default rules for deployment.
 unix {

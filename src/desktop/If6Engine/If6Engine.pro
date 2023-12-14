@@ -30,6 +30,7 @@ SOURCES += \
     EngineMainWindow.cpp
 
 HEADERS += \
+    ../../version.h \
     EngineMainWindow.h \
     version.h
 

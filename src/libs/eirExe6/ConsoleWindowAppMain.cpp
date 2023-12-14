@@ -1,8 +1,5 @@
 #include "ConsoleWindowAppMain.h"
 
-#include <QVBoxLayout>
-#include <QTabBar>
-#include <QStackedWidget>
 
 ConsoleWindowAppMain::ConsoleWindowAppMain(QWidget *parent)
     : QMainWindow{parent}

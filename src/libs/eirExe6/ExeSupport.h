@@ -2,12 +2,15 @@
 #pragma once
 #include "eirExe6.h"
 
-#include <QObject>
-
 class AppArguments;
 class AppSettings;
 class CommandLine;
 
+#include <Log.h>
+
+/*
+Q_GLOBAL_STATIC(EXE, ExeSupport)
+*/
 
 class EIREXE_EXPORT ExeSupport : public QObject
 {
@@ -15,10 +18,16 @@ class EIREXE_EXPORT ExeSupport : public QObject
 public:
     explicit ExeSupport(QObject *parent = nullptr);
 
+public:
+    QDateTime baseTime() const;
+    QTimeZone baseZone() const;
+    QWORD nsecElapsed() const;
+
 signals:
 
 private:
     AppArguments * mpArguments=nullptr;
     AppSettings * mpSettings=nullptr;
     CommandLine * mpCommandLine=nullptr;
+    Log mLog;
 };

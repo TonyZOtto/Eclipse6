@@ -2,11 +2,21 @@
 #pragma once
 #include "eirExe6.h"
 
-#include <QApplication>
-#include <QObject>
+#include "ExeSupport.h"
 
-class EIREXE_EXPORT ConsoleWindowApp : public QApplication
+class QApplication;
+
+class EIREXE_EXPORT ConsoleWindowApp : public ExeSupport
 {
 public:
     ConsoleWindowApp(int &argc, char **argv);
+
+public:
+
+public slots:
+    void start();
+
+
+private:
+    QApplication * mpApp=nullptr;
 };

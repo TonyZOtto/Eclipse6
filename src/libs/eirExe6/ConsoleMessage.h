@@ -2,11 +2,6 @@
 #pragma once
 #include "eirExe6.h"
 
-#include <QObject>
-
-#include <MillisecondTime.h>
-#include <Types.h>
-
 class ConsoleMessage
 {
     Q_GADGET

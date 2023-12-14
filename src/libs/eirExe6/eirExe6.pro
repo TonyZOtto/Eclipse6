@@ -1,7 +1,9 @@
-# {Eclipse6}/root/src/libs/eirBase6/eirExe6.pri
-message(/root/src/libs/eirBase6/eirExe6.pri)
+# {Eclipse6}/root/src/libs/eirBase6/eirExe6.pro
+message(===============/root/src/libs/eirBase6/eirExe6.pro)
 
-QT += core gui widgets
+QT *= core
+QT *= gui
+QT *= widgets
 TEMPLATE = lib
 TARGET = eirExe
 CONFIG += c++17
@@ -12,8 +14,13 @@ include(../../version.pri)
 include(../../DESTDIR.pri)
 include(../libs.pri)
 include(../../useBase.pri)
+include(../../useCore.pri)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
+message(QT = $$QT)
+message(INCLUDEPATH = $$INCLUDEPATH)
+
+PRECOMPILED_HEADER = eirExe6_precompiled.h
 
 SOURCES += \
     AppArguments.cpp \
@@ -41,8 +48,9 @@ HEADERS += \
     ConsoleWindowApp.h \
     ConsoleWindowAppMain.h \
     ExeSupport.h \
-    eirExe_global.h \
-    eirExe6.h
+    eirExe6_global.h \
+    eirExe6.h \
+    eirExe6_precompiled.h
 
 # Default rules for deployment.
 unix {
