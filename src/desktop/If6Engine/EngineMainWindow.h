@@ -10,5 +10,8 @@ public:
     EngineMainWindow(QWidget *parent = nullptr);
     ~EngineMainWindow();
 
+public slots:
+    void setupUI();
+
 private:
 };
