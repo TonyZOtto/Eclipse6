@@ -25,6 +25,7 @@ PRECOMPILED_HEADER = eirExe6_precompiled.h
 SOURCES += \
     AppArguments.cpp \
     AppSettings.cpp \
+    ClockCalendar.cpp \
     CommandLine.cpp \
     ConsoleApp.cpp \
     ConsoleIO.cpp \
@@ -34,11 +35,13 @@ SOURCES += \
     ConsoleWindowApp.cpp \
     ConsoleWindowAppMain.cpp \
     ExeSupport.cpp \
+    SignalRecipient.cpp \
     eirExe6.cpp
 
 HEADERS += \
     AppArguments.h \
     AppSettings.h \
+    ClockCalendar.h \
     CommandLine.h \
     ConsoleApp.h \
     ConsoleIO.h \
@@ -48,6 +51,7 @@ HEADERS += \
     ConsoleWindowApp.h \
     ConsoleWindowAppMain.h \
     ExeSupport.h \
+    SignalRecipient.h \
     eirExe6_global.h \
     eirExe6.h \
     eirExe6_precompiled.h

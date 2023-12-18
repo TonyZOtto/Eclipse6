@@ -4,6 +4,7 @@
 
 class AppArguments;
 class AppSettings;
+class ClockCalendar;
 class CommandLine;
 
 #include <Log.h>
@@ -19,13 +20,11 @@ public:
     explicit ExeSupport(QObject *parent = nullptr);
 
 public:
-    QDateTime baseTime() const;
-    QTimeZone baseZone() const;
-    QWORD nsecElapsed() const;
 
 signals:
 
 private:
+    ClockCalendar * mpClockCalendar=nullptr;
     AppArguments * mpArguments=nullptr;
     AppSettings * mpSettings=nullptr;
     CommandLine * mpCommandLine=nullptr;

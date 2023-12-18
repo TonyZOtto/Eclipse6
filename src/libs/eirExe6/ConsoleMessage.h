@@ -2,7 +2,9 @@
 #pragma once
 #include "eirExe6.h"
 
-class ConsoleMessage
+#include <Message.h>
+
+class ConsoleMessage : public Message
 {
     Q_GADGET
 public:
@@ -15,7 +17,5 @@ signals:
 
     // =================== PROPERTIES ===================
 private:
-    /*Log::Level*/ int mLevel;
-    MillisecondTime mCreatedMst;
 
 };

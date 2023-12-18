@@ -13,10 +13,10 @@ private:
 
     // QMetaType-required below
 public:
-    MetaTypeSample() default;
-    MetaTypeSample(const MetaTypeSample other) default;
-    ~MetaTypeSample() default;
-    MetaTypeSample operator = (const MetaTypeSample &other) default;
+    MetaTypeSample() = default;
+    MetaTypeSample(const MetaTypeSample &other) = default;
+    ~MetaTypeSample() = default;
+    MetaTypeSample &operator = (const MetaTypeSample &other) = default;
 };
 
 Q_DECLARE_METATYPE(MetaTypeSample);

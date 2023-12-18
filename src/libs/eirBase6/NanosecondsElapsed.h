@@ -5,10 +5,10 @@
 
 #include "Types.h"
 
-class NanosecondTime
+class NanosecondsElapsed
 {
 public:
-    NanosecondTime();
+    NanosecondsElapsed();
 
 public: // const
     SQWORD nanoseconds() const;
@@ -27,7 +27,6 @@ public:
     static bool isMonotonic();
 
 private:
-    static void staticStart();
 
 private:
     static QDateTime mBaseTime;
@@ -35,37 +34,37 @@ private:
     QElapsedTimer::Duration mDuration;
 };
 
-inline SQWORD NanosecondTime::nanoseconds() const
+inline SQWORD NanosecondsElapsed::nanoseconds() const
 {
     return duration().count();
 }
 
-inline SQWORD NanosecondTime::microseconds() const
+inline SQWORD NanosecondsElapsed::microseconds() const
 {
     return nanoseconds() / 1000;
 }
 
-inline SQWORD NanosecondTime::milliseconds() const
+inline SQWORD NanosecondsElapsed::milliseconds() const
 {
     return microseconds() / 1000;
 }
 
-inline SQWORD NanosecondTime::seconds() const
+inline SQWORD NanosecondsElapsed::seconds() const
 {
     return milliseconds() / 1000;
 }
 
-inline SQWORD NanosecondTime::minutes() const
+inline SQWORD NanosecondsElapsed::minutes() const
 {
     return seconds() / 60;
 }
 
-inline SQWORD NanosecondTime::hours() const
+inline SQWORD NanosecondsElapsed::hours() const
 {
     return minutes() / 60;
 }
 
-inline QElapsedTimer::Duration NanosecondTime::duration() const
+inline QElapsedTimer::Duration NanosecondsElapsed::duration() const
 {
     return mDuration;
 }

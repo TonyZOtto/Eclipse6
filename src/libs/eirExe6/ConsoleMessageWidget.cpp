@@ -8,3 +8,8 @@ ConsoleMessageWidget::ConsoleMessageWidget(const ConsoleMessage msg,
     setObjectName("ConsoleMessageWidget");
 
 }
+
+void ConsoleMessageWidget::setup()
+{
+
+}

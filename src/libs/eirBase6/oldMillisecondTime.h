@@ -8,16 +8,16 @@
 
 #include "Types.h"
 
-class EIRBASE6_EXPORT MillisecondTime
+class EIRBASE6_EXPORT oldMillisecondTime
 {
 public:
-    MillisecondTime();
-    MillisecondTime(const QDateTime dt,
+    oldMillisecondTime();
+    oldMillisecondTime(const QDateTime dt,
                     const QTimeZone::Initialization tzi=QTimeZone::LocalTime);
-    MillisecondTime(const QDateTime dt, const QTimeZone &tz);
-    MillisecondTime(const EpochMilliseconds ems,
+    oldMillisecondTime(const QDateTime dt, const QTimeZone &tz);
+    oldMillisecondTime(const EpochMilliseconds ems,
                     const QTimeZone::Initialization tzi=QTimeZone::LocalTime);
-    MillisecondTime(const EpochMilliseconds ems, const QTimeZone &tz);
+    oldMillisecondTime(const EpochMilliseconds ems, const QTimeZone &tz);
 
 public:
     QDateTime dateTime() const;
@@ -41,7 +41,7 @@ public:
     void set(const QTimeZone::Initialization tzi);
 
 public:
-    MillisecondTime null() const;
+    oldMillisecondTime null() const;
 
 private:
     QDateTime mDateTime=QDateTime::currentDateTime();

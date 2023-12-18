@@ -1,7 +1,8 @@
 # {Eclipse6}/root/src/libs/eirBase6/eirCore6.pri
 message(/root/src/libs/eirBase6/eirCore6.pri)
 
-QT -= gui
+QT *= core
+QT *= gui
 TEMPLATE = lib
 TARGET = eirCore
 CONFIG += c++17

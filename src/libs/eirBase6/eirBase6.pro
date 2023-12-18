@@ -16,24 +16,23 @@ message(TARGET = $$TARGET)
 
 SOURCES += \
     AText.cpp \
-    BaseTime.cpp \
-    MillisecondTime.cpp \
-    NanosecondTime.cpp \
+    EpochTime.cpp \
+    NanosecondsElapsed.cpp \
     VersionInfo.cpp \
     eirBase6.cpp \
     Uid.cpp
 
 HEADERS += \
     AText.h \
-    BaseTime.h \
-    MillisecondTime.h \
-    NanosecondTime.h \
+    EpochTime.h \
+    NanosecondsElapsed.h \
     Property.h \
     Types.h \
     VersionInfo.h \
     eirBase6_global.h \
     eirBase6.h \
-    Uid.h
+    Uid.h \
+    oldMillisecondTime.h
 
 # Default rules for deployment.
 unix {

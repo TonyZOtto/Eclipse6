@@ -4,6 +4,10 @@
 
 #include <QWidget>
 
+#include <QHBoxLayout>
+#include <QIcon>
+#include <QString>
+
 #include "ConsoleMessage.h"
 
 class EIREXE_EXPORT ConsoleMessageWidget : public QWidget
@@ -13,8 +17,14 @@ public:
     explicit ConsoleMessageWidget(const ConsoleMessage msg,
                                   QWidget *parent = nullptr);
 
+public slots:
+    void setup();
+
 signals:
 
 private:
     const ConsoleMessage cmMessage;
+    QIcon mIcon;
+    QString mMessage;
+    QHBoxLayout mLayout;
 };

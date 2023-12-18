@@ -17,6 +17,7 @@ public slots:
     void tabChanged();
 
 private:
+    QWidget * mpMainWidget=nullptr;
     QVBoxLayout * mpVBoxLayout=nullptr;
     QTabBar * mpTabs=nullptr;
     QStackedWidget * mpStack=nullptr;
