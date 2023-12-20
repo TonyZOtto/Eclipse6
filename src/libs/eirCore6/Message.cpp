@@ -1,5 +1,7 @@
 #include "Message.h"
 
+QList<QIcon> Message::smLevelIcons; // TODO Use SafeList
+
 Message::Message()
 {
     ctor();
@@ -23,6 +25,20 @@ Message::Message(const Level level, const QString format, const QVariantList var
     formatMessage();
 }
 
+QIcon Message::icon() const
+{
+    return icon(m_msgLevel);
+}
+
+QIcon Message::icon(const Level level)
+{
+    QIcon result;
+    if (smLevelIcons.isEmpty()) loadIcons();
+    if (smLevelIcons.count() > int(level))
+        result = smLevelIcons.value(level);
+    return result;
+}
+
 void Message::ctor()
 {
     m_msgUid = Uid();
@@ -31,7 +47,7 @@ void Message::ctor()
     m_msgFlags = $nullFlag;
     m_senderUid = Uid(true);
     m_receiverUid = Uid(true);
-    if (mLevelIcons.isEmpty())
+    if (smLevelIcons.isEmpty())
         loadIcons();
 }
 
@@ -40,10 +56,18 @@ void Message::formatMessage()
     m_text = m_format; // NEEDDO
 }
 
+QtMsgType Message::qmt(const Level level)
+{
+    QtMsgType result = QtMsgType(-1); // invalid
+    // MUSTDO!
+    Q_UNUSED(level);
+    return result;
+}
+
 // static
 void Message::loadIcons()
 {
-    mLevelIcons.resize($maxLevel);
+    smLevelIcons.resize($maxLevel);
 //    for (Level level = Level(int($nullLevel) + 1); level < $maxLevel; ++level)
   //      mLevelIcons[level] = levelIcon(level);
 }

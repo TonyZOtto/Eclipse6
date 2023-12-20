@@ -1,13 +1,13 @@
 #include "NanosecondsElapsed.h"
 
-QDateTime NanosecondsElapsed::mBaseTime;
+EpochTime NanosecondsElapsed::mBaseEms;
 QElapsedTimer NanosecondsElapsed::mElapsedTimer;
 
 NanosecondsElapsed::NanosecondsElapsed()
 {
     if ( ! mElapsedTimer.isValid())
     {
-        mBaseTime = QDateTime::currentDateTime();
+        mBaseEms = EpochTime::current();
         mElapsedTimer.start();
     }
     sample();
@@ -31,4 +31,9 @@ QElapsedTimer::ClockType NanosecondsElapsed::clockType()
 bool NanosecondsElapsed::isMonotonic()
 {
     return QElapsedTimer::isMonotonic();
+}
+
+NanosecondsElapsed::operator < (const NanosecondsElapsed &other) const
+{
+    return nanoseconds() < other.nanoseconds();
 }

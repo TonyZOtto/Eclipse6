@@ -5,7 +5,8 @@
 #include <QIcon>
 #include <QList>
 
-#include <ExeSupport.h>
+#include <EpochTime.h>
+//#include <ExeSupport.h>
 #include <Uid.h>
 
 #include "VariableMap.h"
@@ -137,7 +138,7 @@ private: // static
     static QIcon levelIcon(const Level level);
 
 private: // static
-    static QList<QIcon> mLevelIcons;
+    static QList<QIcon> smLevelIcons;
 
     // ====================== PROPERTIES ===================
 private:
@@ -153,133 +154,5 @@ private:
     QString m_format;
     QVariantList m_variantList;
     VariableMap m_variableMap;
-    Q_PROPERTY(Uid msgUid READ msgUid CONSTANT FINAL)
-    Q_PROPERTY(Level msgLevel READ msgLevel WRITE msgLevel NOTIFY changed_msgLevel FINAL)
-    Q_PROPERTY(Flags msgFlags READ msgFlags WRITE msgFlags NOTIFY changed_msgFlags FINAL)
-    Q_PROPERTY(Uid senderUid READ senderUid WRITE senderUid NOTIFY changed_senderUid FINAL)
-    Q_PROPERTY(Uid receiverUid READ receiverUid WRITE receiverUid NOTIFY changed_receiverUid FINAL)
-    Q_PROPERTY(QDateTime createdTime READ createdTime CONSTANT FINAL)
-    Q_PROPERTY(QDateTime sentTime READ sentTime WRITE sentTime NOTIFY changed_sentTime FINAL)
-    Q_PROPERTY(QDateTime receivedTime READ receivedTime WRITE receivedTime NOTIFY changed_receivedTime FINAL)
-    Q_PROPERTY(QString text READ text WRITE text NOTIFY changed_text FINAL)
-    Q_PROPERTY(QString format READ format WRITE format NOTIFY changed_format FINAL)
-    Q_PROPERTY(QVariantList variantList READ variantList WRITE variantList NOTIFY changed_variantList FINAL)
-public:
-    Uid msgUid() const
-    {
-        return m_msgUid;
-    }
-    Level msgLevel() const
-    {
-        return m_msgLevel;
-    }
-    void msgLevel(Level new_msgLevel)
-    {
-        if (m_msgLevel == new_msgLevel)
-            return;
-        m_msgLevel = new_msgLevel;
-        emit changed_msgLevel();
-    }
-    Flags msgFlags() const
-    {
-        return m_msgFlags;
-    }
-    void msgFlags(const Flags &new_msgFlags)
-    {
-        if (m_msgFlags == new_msgFlags)
-            return;
-        m_msgFlags = new_msgFlags;
-        emit changed_msgFlags();
-    }
-    Uid senderUid() const
-    {
-        return m_senderUid;
-    }
-    void senderUid(const Uid &new_senderUid)
-    {
-        if (m_senderUid == new_senderUid)
-            return;
-        m_senderUid = new_senderUid;
-        emit changed_senderUid();
-    }
-    Uid receiverUid() const
-    {
-        return m_receiverUid;
-    }
-    void receiverUid(const Uid &new_receiverUid)
-    {
-        if (m_receiverUid == new_receiverUid)
-            return;
-        m_receiverUid = new_receiverUid;
-        emit changed_receiverUid();
-    }
-    QDateTime createdTime() const
-    {
-        return m_createdTime;
-    }
-    QDateTime sentTime() const
-    {
-        return m_sentTime;
-    }
-    void sentTime(const QDateTime &new_sentTime)
-    {
-        if (m_sentTime == new_sentTime)
-            return;
-        m_sentTime = new_sentTime;
-        emit changed_sentTime();
-    }
-    QDateTime receivedTime() const
-    {
-        return m_receivedTime;
-    }
-    void receivedTime(const QDateTime &new_receivedTime)
-    {
-        if (m_receivedTime == new_receivedTime)
-            return;
-        m_receivedTime = new_receivedTime;
-        emit changed_receivedTime();
-    }
-    QString text() const
-    {
-        return m_text;
-    }
-    void text(const QString &new_text)
-    {
-        if (m_text == new_text)
-            return;
-        m_text = new_text;
-        emit changed_text();
-    }
-    QString format() const
-    {
-        return m_format;
-    }
-    void format(const QString &new_format)
-    {
-        if (m_format == new_format)
-            return;
-        m_format = new_format;
-        emit changed_format();
-    }
-    QVariantList variantList() const
-    {
-        return m_variantList;
-    }
-    void variantList(const QVariantList &new_variantList)
-    {
-        if (m_variantList == new_variantList)
-            return;
-        m_variantList = new_variantList;
-        emit changed_variantList();
-    }
-signals:
-    void changed_msgLevel();
-    void changed_msgFlags();
-    void changed_senderUid();
-    void changed_receiverUid();
-    void changed_sentTime();
-    void changed_receivedTime();
-    void changed_text();
-    void changed_format();
-    void changed_variantList();
+  public:
 };
