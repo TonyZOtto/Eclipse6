@@ -1,7 +1,9 @@
 # {Eclipse6}/root/src/console/If6Console/If6Console.pri
 message(****/src/console/If6Console/If6Console.pro)
 
-QT       += core gui widgets
+QT       += core
+QT       += gui
+QT       += widgets
 TEMPLATE = app
 TARGET = IfEngine
 CONFIG += c++17

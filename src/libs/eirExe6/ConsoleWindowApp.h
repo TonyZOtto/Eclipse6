@@ -14,6 +14,8 @@ public:
 public:
 
 public slots:
+    void initialize();
+    void setup();
     void start();
 
 

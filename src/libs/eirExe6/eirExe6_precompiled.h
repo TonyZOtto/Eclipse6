@@ -13,6 +13,8 @@
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QTabBar>
 #include <QTimeZone>
+#include <QtWidgets/QBoxLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QVBoxLayout>
 
 #include <oldMillisecondTime.h>

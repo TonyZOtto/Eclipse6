@@ -28,12 +28,12 @@ SOURCES += \
     ClockCalendar.cpp \
     CommandLine.cpp \
     ConsoleApp.cpp \
+    ConsoleAppMainWindow.cpp \
     ConsoleIO.cpp \
     ConsoleMessage.cpp \
-    ConsoleMessageDisplay.cpp \
     ConsoleMessageWidget.cpp \
+    ConsoleStreamDisplay.cpp \
     ConsoleWindowApp.cpp \
-    ConsoleWindowAppMain.cpp \
     ExeSupport.cpp \
     SignalRecipient.cpp \
     eirExe6.cpp
@@ -44,12 +44,12 @@ HEADERS += \
     ClockCalendar.h \
     CommandLine.h \
     ConsoleApp.h \
+    ConsoleAppMainWindow.h \
     ConsoleIO.h \
     ConsoleMessage.h \
-    ConsoleMessageDisplay.h \
     ConsoleMessageWidget.h \
+    ConsoleStreamDisplay.h \
     ConsoleWindowApp.h \
-    ConsoleWindowAppMain.h \
     ExeSupport.h \
     SignalRecipient.h \
     eirExe6_global.h \

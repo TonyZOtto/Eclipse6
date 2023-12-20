@@ -26,5 +26,5 @@ private:
     const ConsoleMessage cmMessage;
     QIcon mIcon;
     QString mMessage;
-    QHBoxLayout mLayout;
+    QHBoxLayout * mpLayout=nullptr;
 };

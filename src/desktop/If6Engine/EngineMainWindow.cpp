@@ -5,7 +5,7 @@
 
 
 EngineMainWindow::EngineMainWindow(QWidget *parent)
-    : ConsoleWindowAppMain(parent)
+    : ConsoleAppMainWindow(parent)
 {
     setObjectName("EngineMainWindow");
     showMaximized();
@@ -17,5 +17,5 @@ EngineMainWindow::~EngineMainWindow() {;}
 void EngineMainWindow::setupUI()
 {
     setWindowTitle("INDIface6 Engine Manager");
-    ConsoleWindowAppMain();
+    ConsoleAppMainWindow();
 }

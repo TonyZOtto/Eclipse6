@@ -154,5 +154,54 @@ private:
     QString m_format;
     QVariantList m_variantList;
     VariableMap m_variableMap;
-  public:
+    Q_PROPERTY(Uid msgUid READ msgUid CONSTANT FINAL)
+    Q_PROPERTY(Level msgLevel READ msgLevel CONSTANT FINAL)
+    Q_PROPERTY(Flags msgFlags READ msgFlags CONSTANT FINAL)
+    Q_PROPERTY(Uid senderUid READ senderUid CONSTANT FINAL)
+    Q_PROPERTY(Uid receiverUid READ receiverUid CONSTANT FINAL)
+    Q_PROPERTY(QDateTime createdTime READ createdTime CONSTANT FINAL)
+    Q_PROPERTY(QDateTime sentTime READ sentTime CONSTANT FINAL)
+    Q_PROPERTY(QDateTime receivedTime READ receivedTime CONSTANT FINAL)
+    Q_PROPERTY(QString text READ text CONSTANT FINAL)
+public:
+    Uid msgUid() const
+    {
+        return m_msgUid;
+    }
+    Level msgLevel() const
+    {
+        return m_msgLevel;
+    }
+    Flags msgFlags() const
+    {
+        return m_msgFlags;
+    }
+    Uid senderUid() const
+    {
+        return m_senderUid;
+    }
+    Uid receiverUid() const
+    {
+        return m_receiverUid;
+    }
+    QDateTime createdTime() const
+    {
+        return m_createdTime;
+    }
+    QDateTime sentTime() const
+    {
+        return m_sentTime;
+    }
+    QDateTime receivedTime() const
+    {
+        return m_receivedTime;
+    }
+    QString text() const
+    {
+        return m_text;
+    }
+    QString format() const
+    {
+        return m_format;
+    }
 };

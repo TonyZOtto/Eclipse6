@@ -1,8 +1,8 @@
 #pragma once
 
-#include <ConsoleWindowAppMain.h>
+#include <ConsoleAppMainWindow.h>
 
-class EngineMainWindow : public ConsoleWindowAppMain
+class EngineMainWindow : public ConsoleAppMainWindow
 {
     Q_OBJECT
 
