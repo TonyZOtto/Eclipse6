@@ -4,7 +4,7 @@
 
 #include <QWidget>
 
-#include <QHBoxLayout>
+#include <QGridLayout>
 #include <QIcon>
 #include <QString>
 
@@ -26,5 +26,5 @@ private:
     const ConsoleMessage cmMessage;
     QIcon mIcon;
     QString mMessage;
-    QHBoxLayout * mpLayout=nullptr;
+    QGridLayout * mpLayout=nullptr;
 };

@@ -10,6 +10,7 @@ ConsoleAppMainWindow::ConsoleAppMainWindow(QWidget *parent)
     , mpStreamStack(new QStackedWidget)
     , mpEngineDisplay(new ConsoleStreamDisplay("Engine", this))
 {
+    qDebug() << Q_FUNC_INFO;
     setObjectName("ConsoleWindowAppMain");
     Q_ASSERT_X(mpMainWidget, Q_FUNC_INFO, "Invalid mpMainWidget");
     Q_ASSERT_X(mpMainLayout, Q_FUNC_INFO, "Invalid mpMainLayout");
@@ -23,12 +24,14 @@ ConsoleAppMainWindow::ConsoleAppMainWindow(QWidget *parent)
 
 void ConsoleAppMainWindow::initialize()
 {
+    qDebug() << Q_FUNC_INFO;
     Q_ASSERT_X(mpEngineDisplay, Q_FUNC_INFO, "Invalid mpEngineDisplay");
     mpEngineDisplay->initialize();
 }
 
 void ConsoleAppMainWindow::setup()
 {
+    qDebug() << Q_FUNC_INFO;
     Q_ASSERT_X(mpMainWidget, Q_FUNC_INFO, "Invalid mpMainWidget");
     Q_ASSERT_X(mpMainLayout, Q_FUNC_INFO, "Invalid mpMainLayout");
     Q_ASSERT_X(mpStreamTabs, Q_FUNC_INFO, "Invalid mpStreamTabs");
@@ -37,6 +40,7 @@ void ConsoleAppMainWindow::setup()
     mpMainLayout->addWidget(mpStreamStack);
     mpMainWidget->setLayout(mpMainLayout);
     setCentralWidget(mpMainWidget);
+    mpStreamTabs->setShape(QTabBar::RoundedWest);
     connect(mpStreamTabs, &QTabBar::currentChanged,
             this, &ConsoleAppMainWindow::streamTabChanged);
     mpEngineDisplay->setup();
@@ -45,6 +49,7 @@ void ConsoleAppMainWindow::setup()
 
 void ConsoleAppMainWindow::start()
 {
+    qDebug() << Q_FUNC_INFO;
     Q_ASSERT_X(mpEngineDisplay, Q_FUNC_INFO, "Invalid mpEngineDisplay");
     mpEngineDisplay->start();
     addDisplay(mpEngineDisplay);
@@ -52,6 +57,7 @@ void ConsoleAppMainWindow::start()
 
 void ConsoleAppMainWindow::addDisplay(ConsoleStreamDisplay *pcsd)
 {
+    qDebug() << Q_FUNC_INFO;
     Q_ASSERT_X(pcsd, Q_FUNC_INFO, "Invalid ConsoleStreamDisplay");
     Q_ASSERT_X(mpStreamTabs, Q_FUNC_INFO, "Invalid mpStreamTabs");
     Q_ASSERT_X(mpStreamStack, Q_FUNC_INFO, "Invalid mpStreamStack");
@@ -62,5 +68,6 @@ void ConsoleAppMainWindow::addDisplay(ConsoleStreamDisplay *pcsd)
 
 void ConsoleAppMainWindow::streamTabChanged()
 {
-    Q_ASSERT(!"MUSTDO");
+    qDebug() << Q_FUNC_INFO << "MUSTDO";
+    // FIXME Must Do
 }

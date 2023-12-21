@@ -11,7 +11,9 @@ public:
     ~EngineMainWindow();
 
 public slots:
-    void setupUI();
+    void initialize();
+    void setup();
+    void start();
 
 private:
 };

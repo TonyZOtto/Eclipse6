@@ -27,10 +27,12 @@ SOURCES += \
     AppSettings.cpp \
     ClockCalendar.cpp \
     CommandLine.cpp \
+    Configuration.cpp \
     ConsoleApp.cpp \
     ConsoleAppMainWindow.cpp \
     ConsoleIO.cpp \
     ConsoleMessage.cpp \
+    ConsoleMessageConfiguration.cpp \
     ConsoleMessageWidget.cpp \
     ConsoleStreamDisplay.cpp \
     ConsoleWindowApp.cpp \
@@ -43,10 +45,12 @@ HEADERS += \
     AppSettings.h \
     ClockCalendar.h \
     CommandLine.h \
+    Configuration.h \
     ConsoleApp.h \
     ConsoleAppMainWindow.h \
     ConsoleIO.h \
     ConsoleMessage.h \
+    ConsoleMessageConfiguration.h \
     ConsoleMessageWidget.h \
     ConsoleStreamDisplay.h \
     ConsoleWindowApp.h \

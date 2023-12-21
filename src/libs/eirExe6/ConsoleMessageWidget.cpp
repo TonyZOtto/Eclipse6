@@ -5,7 +5,7 @@ ConsoleMessageWidget::ConsoleMessageWidget(const ConsoleMessage msg,
     : QWidget{parent}
     , cmMessage(msg)
     , mIcon(msg.icon())
-    , mpLayout(new QHBoxLayout)
+    , mpLayout(new QGridLayout)
 {
     setObjectName("ConsoleMessageWidget");
     setup();
@@ -13,7 +13,8 @@ ConsoleMessageWidget::ConsoleMessageWidget(const ConsoleMessage msg,
 
 void ConsoleMessageWidget::setup()
 {
-    Q_ASSERT_X(mpLayout, Q_FUNC_INFO, "Invalid mpEngineDisplay");
+    qDebug() << Q_FUNC_INFO;
+    Q_ASSERT_X(mpLayout, Q_FUNC_INFO, "Invalid QGridLayout");
 
     setLayout(mpLayout);
 }
