@@ -2,8 +2,16 @@
 #pragma once
 #include "eirCore6.h"
 
+#include <QVariant>
+
 class EIRCORE6_EXPORT Value
 {
 public:
     Value();
+
+private:
+    QMetaType mMetaType;
+    QVariant mVariant;
+    QVariant mDefault;
+
 };
