@@ -4,6 +4,7 @@
 
 #include <QIcon>
 #include <QList>
+#include <QSize>
 
 #include <EpochTime.h>
 //#include <ExeSupport.h>
@@ -123,7 +124,7 @@ public:
             const QVariantList vars, const Flags f=$nullFlag);
 
 public: // const
-    QIcon icon() const;
+    QPixmap iconPixmap(const QSize &sz) const;
 
 public: // static
     static QIcon icon(const Level level);

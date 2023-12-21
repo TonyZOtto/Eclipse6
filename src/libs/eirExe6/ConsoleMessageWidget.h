@@ -9,6 +9,7 @@
 #include <QString>
 
 #include "ConsoleMessage.h"
+#include "ConsoleMessageConfiguration.h"
 
 class EIREXE_EXPORT ConsoleMessageWidget : public QWidget
 {
@@ -17,14 +18,20 @@ public:
     explicit ConsoleMessageWidget(const ConsoleMessage msg,
                                   QWidget *parent = nullptr);
 
+public: // const
+    ConsoleMessage message() const { return mMessage; }
+
 public slots:
     void setup();
+
+public: // static
+    static ConsoleMessageConfiguration & config() { return smConfig; }
 
 signals:
 
 private:
     const ConsoleMessage cmMessage;
-    QIcon mIcon;
-    QString mMessage;
+    ConsoleMessage mMessage;
     QGridLayout * mpLayout=nullptr;
+    static ConsoleMessageConfiguration smConfig;
 };

@@ -22,6 +22,8 @@ public:
     void set(const char * pch);
     void set(const AText s);
 
+
 private:
     KeySeg::List mSegList;
+    static char smHinge;
 };

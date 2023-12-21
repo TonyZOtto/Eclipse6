@@ -3,9 +3,13 @@
 #include "eirBase6.h"
 
 #include <QByteArray>
+#include <QByteArrayList>
 
 class EIRBASE6_EXPORT AText : public QByteArray
 {
+public:
+    typedef QByteArrayList List;
+
 public:
     AText() {;}
     AText(const QByteArray ba) : QByteArray(ba) {;}

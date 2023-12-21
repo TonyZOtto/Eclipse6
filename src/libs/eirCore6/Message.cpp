@@ -25,9 +25,9 @@ Message::Message(const Level level, const QString format, const QVariantList var
     formatMessage();
 }
 
-QIcon Message::icon() const
+QPixmap Message::iconPixmap(const QSize &sz) const
 {
-    return icon(m_msgLevel);
+    return icon(m_msgLevel).pixmap(sz);
 }
 
 QIcon Message::icon(const Level level)
