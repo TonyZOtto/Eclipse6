@@ -14,7 +14,7 @@ include(../../version.pri)
 include(../../DESTDIR.pri)
 include(../libs.pri)
 include(../../useBase.pri)
-include(../../useExe.pri)
+# include(../../useExe.pri)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
