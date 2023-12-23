@@ -11,10 +11,6 @@ Configuration::Configuration(QSettings *set, const Key groupKey)
 
 QVariant Configuration::operator [](const Key key) const
 {
-    return mpSettings[key()];
-}
-
-QVariant &Configuration::operator [](const Key key)
-{
-    return mpSettings[key()];
+    Q_ASSERT_X(mpSettings, Q_FUNC_INFO, "QSettings *");
+    return mpSettings->value(key());
 }

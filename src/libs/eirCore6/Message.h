@@ -7,7 +7,6 @@
 #include <QSize>
 
 #include <EpochTime.h>
-//#include <ExeSupport.h>
 #include <Uid.h>
 
 #include "VariableMap.h"

@@ -2,7 +2,10 @@
 #pragma once
 #include "eirCore6.h"
 
+#include <QString>
+
 #include "KeySeg.h"
+#include "KeySegList.h"
 
 class EIRCORE6_EXPORT Key
 {
@@ -16,14 +19,16 @@ public:
     int count() const  { return mSegList.count(); }
     QString toString() const;
     operator QString() const { return toString(); }
+    QString operator() () const { return toString(); }
 
 public:
     void clear() { mSegList.clear(); }
     void set(const char * pch);
     void set(const AText s);
+    Key & append(const KeySeg &seg);
 
 
 private:
-    KeySeg::List mSegList;
+    KeySegList mSegList;
     static char smHinge;
 };

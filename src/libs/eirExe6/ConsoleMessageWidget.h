@@ -10,28 +10,29 @@
 
 #include "ConsoleMessage.h"
 #include "ConsoleMessageConfiguration.h"
+class ConsoleStreamDisplay;
 
 class EIREXE_EXPORT ConsoleMessageWidget : public QWidget
 {
     Q_OBJECT
 public:
     explicit ConsoleMessageWidget(const ConsoleMessage msg,
-                                  QWidget *parent = nullptr);
+                                  ConsoleStreamDisplay *parent=nullptr);
 
 public: // const
-    ConsoleMessage message() const { return mMessage; }
+    ConsoleStreamDisplay * display() { return mpDisplay; }
+    ConsoleMessage message() const { return cmMessage; }
+    ConsoleMessageConfiguration config();
 
 public slots:
     void setup();
 
 public: // static
-    static ConsoleMessageConfiguration & config() { return smConfig; }
 
 signals:
 
 private:
+    ConsoleStreamDisplay * mpDisplay;
     const ConsoleMessage cmMessage;
-    ConsoleMessage mMessage;
     QGridLayout * mpLayout=nullptr;
-    static ConsoleMessageConfiguration smConfig;
 };

@@ -5,7 +5,12 @@ char Key::smHinge = '/';
 
 QString Key::toString() const
 {
-    return mSegList.join(smHinge);
+    QString result;
+    KeySegList tSegList = mSegList;
+    result = tSegList.takeFirst().toString();
+    foreach (KeySeg tSeg, tSegList)
+        result += smHinge + tSeg.toString();
+    return result;
 }
 
 void Key::set(const char *pch)
@@ -16,11 +21,14 @@ void Key::set(const char *pch)
 void Key::set(const AText s)
 {
     const AText::List cList = s.split(smHinge);
-    Key tResult;
+    Key tKey;
     foreach (AText t, cList)
-    {
-        KeySeg tSeg(t);
-        if ( ! tSeg.isEmpty())
-            tResult.append(tSeg);
-    }
+        tKey.append(KeySeg(t));
 }
+
+Key &Key::append(const KeySeg &seg)
+{
+    if ( ! seg.isEmpty()) mSegList.append(seg);
+    return *this;
+}
+

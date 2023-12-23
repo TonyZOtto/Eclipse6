@@ -17,9 +17,9 @@ public:
     QVariant operator [] (const Key key) const;
 
 public:
-    QVariant & operator [] (const Key key);
+//    QVariant & operator [] (const Key key);
 
 private:
-    Key mGroup;
     QSettings * mpSettings=nullptr;
+    Key mGroup;
 };

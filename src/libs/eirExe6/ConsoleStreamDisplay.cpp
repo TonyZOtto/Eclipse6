@@ -3,13 +3,25 @@
 #include "ConsoleMessage.h"
 #include "ConsoleMessageWidget.h"
 
-ConsoleStreamDisplay::ConsoleStreamDisplay(const QString s, QWidget *parent)
+ConsoleStreamDisplay::ConsoleStreamDisplay(const QString title, QWidget *parent)
     : QWidget{parent}
-    , mTitle(s)
+    , mTitle(title)
     , mpLayout(new QBoxLayout(QBoxLayout::TopToBottom))
 {
     qDebug() << Q_FUNC_INFO;
-    setObjectName("ConsoleMessageDisplay:"+title());
+    setObjectName("ConsoleMessageDisplay:"+title);
+    Q_ASSERT_X(mpLayout, "ConsoleMessageDisplay", "Invalid mpLayout");
+    mpLayout->setObjectName("ConsoleMessageDisplay:QBoxLayout");
+}
+
+ConsoleStreamDisplay::ConsoleStreamDisplay(const QString title, const ConsoleMessageConfiguration &config, QWidget *parent)
+    : QWidget{parent}
+    , mTitle(title)
+    , mMessageConfiguration(config)
+    , mpLayout(new QBoxLayout(QBoxLayout::TopToBottom))
+{
+    qDebug() << Q_FUNC_INFO;
+    setObjectName("ConsoleMessageDisplay:"+title);
     Q_ASSERT_X(mpLayout, "ConsoleMessageDisplay", "Invalid mpLayout");
     mpLayout->setObjectName("ConsoleMessageDisplay:QBoxLayout");
 }

@@ -4,18 +4,23 @@
 
 #include <QByteArray>
 #include <QByteArrayList>
+#include <QString>
 
 class EIRBASE6_EXPORT AText : public QByteArray
 {
-public:
+public: // types
     typedef QByteArrayList List;
 
-public:
+public: // ctors
     AText() {;}
     AText(const QByteArray ba) : QByteArray(ba) {;}
     AText(const char * pch) : QByteArray(pch) {;}
 
-public:
+public: // const
+    QString toString() const;
+    operator QString () const { return toString(); }
+
+public: // non-const
     char takeFirstChar();
     void append(const char ch);
 };
