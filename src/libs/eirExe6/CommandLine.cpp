@@ -1,6 +1,10 @@
 #include "CommandLine.h"
 
-#include "ExeSupport.h"
+#include <QCoreApplication>
+
+//#include "ExeSupport.h"
+
+// --------------------- ctors ---------------------
 
 CommandLine::CommandLine(QObject *parent)
     : QObject{parent}
@@ -17,6 +21,8 @@ CommandLine::CommandLine(const Flags f, QObject *parent)
     qDebug() << Q_FUNC_INFO << f;
     ctor();
 }
+
+// --------------------- public slots ---------------------
 
 void CommandLine::setupOptions()
 {
@@ -47,9 +53,14 @@ void CommandLine::preparse(const QStringList argList)
 void CommandLine::process()
 {
     qDebug() << Q_FUNC_INFO;
-    Q_ASSERT_X(false, Q_FUNC_INFO, "MUSTDO process()");
-    //  MUSTDO process()
+    if (mArguments.isEmpty())
+        mArguments = QCoreApplication::arguments();
+    mExeFileInfo = QFileInfo(mArguments.takeFirst());
+    while ( ! mArguments.isEmpty())
+        process(mArguments.takeFirst());
 }
+
+// --------------------- private ---------------------
 
 void CommandLine::ctor()
 {
@@ -58,6 +69,18 @@ void CommandLine::ctor()
     mpOptionsSetupFunction = nullptr;
     mParser.setSingleDashWordOptionMode(QCommandLineParser::ParseAsCompactedShortOptions);
     mParser.setOptionsAfterPositionalArgumentsMode(QCommandLineParser::ParseAsOptions);
+}
+
+void CommandLine::process(const QString arg)
+{
+    qDebug() << Q_FUNC_INFO << arg;
+    if (arg.isEmpty()) return;
+    QChar tFirstChar = arg[0];
+    QString tText = arg.mid(1);
+
+    Q_ASSERT_X(false, Q_FUNC_INFO, "MUSTDO process()");
+    //  MUSTDO process()
+    Q_UNUSED(tFirstChar); Q_UNUSED(tText);
 }
 
 

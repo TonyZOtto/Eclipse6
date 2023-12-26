@@ -57,6 +57,7 @@ public slots:
 
 private:
     void ctor();
+    void process(const QString arg);
 
 signals: // TODO define signals
 
