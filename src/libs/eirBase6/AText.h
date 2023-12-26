@@ -22,5 +22,4 @@ public: // const
 
 public: // non-const
     char takeFirstChar();
-    void append(const char ch);
 };

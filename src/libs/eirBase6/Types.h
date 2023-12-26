@@ -18,4 +18,7 @@ typedef qint128         SOWORD;
 typedef QString         UText;
 typedef QWORD           EpochMilliseconds;
 
+typedef size_t          Count;
+typedef qsizetype       Index;
+
 typedef QList<int>      IntList;
