@@ -57,6 +57,10 @@ public slots:
 
 private:
     void ctor();
+    void process(const QString arg);
+    void processInclude(const QString &filePathName);
+    void processDynamic(const QString &settingsKey);
+    void processSetting(const QString &keyAndValue);
 
 signals: // TODO define signals
 
