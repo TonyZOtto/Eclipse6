@@ -5,7 +5,7 @@
 #include <QElapsedTimer>
 
 #include "EpochTime.h"
-#include "Types.h"
+#include "Types.h" // TODO const nanoPerMicro, etc.
 
 class EIRBASE6_EXPORT NanosecondsElapsed
 {

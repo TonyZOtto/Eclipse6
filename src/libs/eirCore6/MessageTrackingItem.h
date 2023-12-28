@@ -10,7 +10,7 @@ class MessageTrackingItem
 {
     Q_GADGET
 public:
-    explicit MessageTrackingItem(const Uid uid, const QVariant data=QVariant());
+    MessageTrackingItem(const Uid uid, const QVariant data=QVariant());
 
     // ====================== PROPERTIES ===================
 private:

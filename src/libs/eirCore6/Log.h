@@ -12,7 +12,6 @@ public:
     Log();
 
 private:
-    //static QtMessageHandler logMessageHandler;
     static void logMessageHandler(QtMsgType qmt,
                                   const QMessageLogContext & context,
                                   const QString & message);

@@ -10,7 +10,8 @@ class LogContext
 {
     Q_GADGET
 public:
-    explicit LogContext() {;}
+    explicit LogContext();
+    LogContext(const LogContext &other);
 
 public:
     void set(const QMessageLogContext qmlc);

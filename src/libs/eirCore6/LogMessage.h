@@ -13,20 +13,18 @@ class LogMessage : public Message
     Q_GADGET
 
 public: // ctors
-    LogMessage() {;}
+    LogMessage();
+    LogMessage(const QMessageLogContext &qmlc);
 
 public: // non-const
-    void set(const QMessageLogContext qmlc);
-    void track(const MessageTrackingItem &mti);
+    void set(const QMessageLogContext &qmlc);
 
     // ====================== PROPERTIES ===================
 private:
     LogContext m_logContext;
     NanosecondsElapsed m_msgNano;
-    QMap<NanosecondsElapsed, MessageTrackingItem> m_tracking;
     Q_PROPERTY(LogContext logContext READ logContext CONSTANT FINAL)
     Q_PROPERTY(NanosecondsElapsed msgNano READ msgNano CONSTANT FINAL)
-    Q_PROPERTY(QMap<NanosecondsElapsed, MessageTrackingItem> tracking READ tracking CONSTANT FINAL)
 
 public:
     LogContext logContext() const
@@ -36,9 +34,5 @@ public:
     NanosecondsElapsed msgNano() const
     {
         return m_msgNano;
-    }
-    QMap<NanosecondsElapsed, MessageTrackingItem> tracking() const
-    {
-        return m_tracking;
     }
 };

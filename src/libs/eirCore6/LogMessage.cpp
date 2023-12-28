@@ -1,6 +1,14 @@
 #include "LogMessage.h"
 
-void LogMessage::track(const MessageTrackingItem &mti)
+
+LogMessage::LogMessage() {;}
+
+LogMessage::LogMessage(const QMessageLogContext &qmlc)
 {
-    m_tracking.insert(mti.nano(), mti);
+    m_logContext.set(qmlc);
+}
+
+void LogMessage::set(const QMessageLogContext &qmlc)
+{
+    m_logContext.set(qmlc);
 }

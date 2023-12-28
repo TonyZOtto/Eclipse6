@@ -27,7 +27,6 @@ SOURCES += \
     LogContext.cpp \
     LogMessage.cpp \
     Message.cpp \
-    MessageTrackingItem.cpp \
     Value.cpp \
     Variable.cpp \
     VariableList.cpp \
@@ -44,7 +43,6 @@ HEADERS += \
     LogMacros.h \
     LogMessage.h \
     Message.h \
-    MessageTrackingItem.h \
     MetaTypeSample.h \
     SafeList.h \
     Value.h \
