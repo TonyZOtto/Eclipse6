@@ -18,38 +18,38 @@ public:
     enum Level
     {
         $nullLevel = 0,
-        Config,
-        Detail,
-        TDetail,
-        Info,
-        Level05,
-        Progress,
-        Level07,
-        Prefer,
-        FnArgs,
-        FnLeave,
-        FnEnter,
-        Level12,
-        Dump,
-        TConfig,
-        Trace,
-        TProg,
-        Level17,
-        Level18,
-        Level19,
-        Level20,
-        TWarn,
-        Warning,
-        Level23,
-        TExpect,
-        Expect,
-        Assert,
-        Error,
-        MemFail,
-        Terminate,
-        Level30,
-        Shutdown,
-        $maxLevel
+        Config,         //  1
+        Detail,         //  2
+        TDetail,        //  3
+        Info,           //  4
+        Level05,        //  5
+        Progress,       //  6
+        Level07,        //  7
+        Prefer,         //  8
+        FnArgs,         //  9
+        FnLeave,        // 10
+        FnEnter,        // 11
+        Level12,        // 12
+        Dump,           // 13
+        TConfig,        // 14
+        Trace,          // 15
+        TProg,          // 16
+        Level17,        // 17
+        Level18,        // 18
+        Level19,        // 19
+        Level20,        // 20
+        TWarn,          // 21
+        Warning,        // 22
+        Level23,        // 23
+        TExpect,        // 24
+        Expect,         // 25
+        Assert,         // 26
+        Error,          // 27
+        MemFail,        // 28
+        Terminate,      // 29
+        Level30,        // 30
+        Shutdown,       // 31
+        $maxLevel       // 32
     };
     Q_ENUM(Level)
 
