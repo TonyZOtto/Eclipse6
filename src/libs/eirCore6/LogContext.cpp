@@ -6,6 +6,15 @@ LogContext::LogContext()
     m_contextVersion = m_lineNumber = 0;
 }
 
+LogContext::LogContext(const QMessageLogContext qmlc)
+{
+    m_functionInfo = FunctionInfo(qmlc.function),
+        m_contextVersion = qmlc.version,
+        m_lineNumber = qmlc.version,
+        m_fileInfo = QFileInfo(qmlc.file),
+        m_category = qmlc.category;
+}
+
 LogContext::LogContext(const LogContext &other)
 {
     m_functionInfo = other.m_functionInfo,
@@ -17,9 +26,9 @@ LogContext::LogContext(const LogContext &other)
 
 void LogContext::set(const QMessageLogContext qmlc)
 {
-    m_functionInfo = FunctionInfo(qmlc.function);
-    m_contextVersion = qmlc.version;
-    m_lineNumber = qmlc.version;
-    m_fileInfo = QFileInfo(qmlc.file);
-    m_category = qmlc.category;
+    m_functionInfo = FunctionInfo(qmlc.function),
+        m_contextVersion = qmlc.version,
+        m_lineNumber = qmlc.version,
+        m_fileInfo = QFileInfo(qmlc.file),
+        m_category = qmlc.category;
 }

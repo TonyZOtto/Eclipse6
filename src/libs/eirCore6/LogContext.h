@@ -11,6 +11,7 @@ class LogContext
     Q_GADGET
 public:
     explicit LogContext();
+    LogContext(const QMessageLogContext qmlc);
     LogContext(const LogContext &other);
 
 public:

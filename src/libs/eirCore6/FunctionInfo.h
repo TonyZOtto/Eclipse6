@@ -1,5 +1,6 @@
 #pragma once
 
+#include <QFileInfo>
 #include <QList>
 #include <QMetaType>
 #include <QObject>
@@ -8,6 +9,7 @@
 
 #include "Key.h"
 #include "KeySegList.h"
+#include "LogContext.h"
 
 class FunctionInfo
 {
@@ -39,11 +41,11 @@ public:
 
 public:
     FunctionInfo() {;}
-    FunctionInfo(const QString &qfi);
+    FunctionInfo(const LogContext context);
 
 public:
     //! Supply Q_FUNC_INFO string to parser if default ctor was used.
-    void parse(const QString &qfi);
+    void parse(const LogContext context);
 
 private:
     //! Parse Q_FUNC_INFO into component parts
@@ -61,7 +63,10 @@ private:
 
     // ====================== PROPERTIES ===================
 private:
+    LogContext m_context;
     QString m_qFuncInfo;
+    QFileInfo m_fileInfo;
+    int m_fileLine;
     Flags m_flags;
     QString m_anteMatter;
     QString m_names;

@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QMessageLogger>
 
+#include "LogMessage.h"
+
 class EIRCORE6_EXPORT Log
 {
 
@@ -17,5 +19,4 @@ private:
                                   const QString & message);
 };
 
-#include "LogMacros.h"
 

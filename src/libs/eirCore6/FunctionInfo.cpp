@@ -1,19 +1,22 @@
 #include "FunctionInfo.h"
 
-FunctionInfo::FunctionInfo(const QString &qfi)
-    : m_qFuncInfo(qfi)
+FunctionInfo::FunctionInfo(const LogContext context)
+    : m_context(context)
 {
     parse();
 }
 
-void FunctionInfo::parse(const QString &qfi)
+void FunctionInfo::parse(const LogContext context)
 {
-    m_qFuncInfo = qfi;
+    m_context = context;
     parse();
 }
 
 void FunctionInfo::parse()
 {
+    m_qFuncInfo = m_context.functionInfo().m_qFuncInfo;
+    m_fileInfo = QFileInfo(m_context().m_fileName);
+    m_fileLine = m_context.lineNumber();
     initialSplit();
     handleAnte();
     handleNames();

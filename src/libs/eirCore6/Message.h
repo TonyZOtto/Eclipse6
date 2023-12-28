@@ -22,14 +22,14 @@ public:
         Detail,         //  2
         TDetail,        //  3
         Info,           //  4
-        Level05,        //  5
+        MsgInfo,        //  5
         Progress,       //  6
         Level07,        //  7
         Prefer,         //  8
         FnArgs,         //  9
         FnLeave,        // 10
         FnEnter,        // 11
-        Level12,        // 12
+        MsgTrace,       // 12
         Dump,           // 13
         TConfig,        // 14
         Trace,          // 15
@@ -37,17 +37,17 @@ public:
         Level17,        // 17
         Level18,        // 18
         Level19,        // 19
-        Level20,        // 20
+        MsgWarn,        // 20
         TWarn,          // 21
         Warning,        // 22
-        Level23,        // 23
+        MsgCritical,    // 23
         TExpect,        // 24
         Expect,         // 25
         Assert,         // 26
         Error,          // 27
         MemFail,        // 28
         Terminate,      // 29
-        Level30,        // 30
+        MsgFatal,       // 30
         Shutdown,       // 31
         $maxLevel       // 32
     };
@@ -60,14 +60,14 @@ public:
         DetailFlag      = 1 << Detail,
         TDetailFlag     = 1 << TDetail,
         InfoFlag        = 1 << Info,
-        Level05Flag     = 1 << Level05,
+        MsgInfoFlag     = 1 << MsgInfo,
         ProgressFlag    = 1 << Progress,
         Level07Flag     = 1 << Level07,
         PreferFlag      = 1 << Prefer,
         FnArgsFlag      = 1 << FnArgs,
         FnLeaveFlag     = 1 << FnLeave,
         FnEnterFlag     = 1 << FnEnter,
-        Level12Flag     = 1 << Level12,
+        MsgTraceFlag    = 1 << MsgTrace,
         DumpFlag        = 1 << Dump,
         TConfigFlag     = 1 << TConfig,
         TraceFlag       = 1 << Trace,
@@ -75,17 +75,17 @@ public:
         Level17Flag     = 1 << Level17,
         Level18Flag     = 1 << Level18,
         Level19Flag     = 1 << Level19,
-        Level20Flag     = 1 << Level20,
+        MsgWarnFlag     = 1 << MsgWarn,
         TWarnFlag       = 1 << TWarn,
         WarningFlag     = 1 << Warning,
-        Level23Flag     = 1 << Level23,
+        MsgCriticalFlag = 1 << MsgCritical,
         TExpectFlag     = 1 << TExpect,
         ExpectFlag      = 1 << Expect,
         AssertFlag      = 1 << Assert,
         ErrorFlag       = 1 << Error,
         MemFailFlag     = 1 << MemFail,
         TerminateFlag   = 1 << Terminate,
-        Level30Flag     = 1 << Level30,
+        MsgFatalFlag    = 1 << MsgFatal,
         ShutdownFlag    = 1 << Shutdown,
         UserFlagMask    = ConfigFlag | DetailFlag | InfoFlag
                             | ProgressFlag | WarningFlag | ExpectFlag,
@@ -102,9 +102,12 @@ public:
         QWarnMask       = TWarnFlag | WarningFlag | ExpectFlag,
         QCriticalMask   = AssertFlag | ErrorFlag,
         QFatalMask      = MemFailFlag | TerminateFlag | ShutdownFlag,
+        MsgMask         = MsgInfoFlag | MsgTraceFlag | MsgWarnFlag
+                            | MsgCriticalFlag | MsgFatalFlag,
     };
     Q_DECLARE_FLAGS(LevelFlags, LevelFlag)
     Q_FLAG(LevelFlags)
+
     enum Flag
     {
         $nullFlag       = 0,
