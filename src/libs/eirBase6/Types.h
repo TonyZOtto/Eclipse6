@@ -14,9 +14,13 @@ typedef qint16          SWORD;
 typedef qint32          SDWORD;
 typedef qint64          SQWORD;
 typedef qint128         SOWORD;
+typedef quintptr        NWORD;
+typedef qptrdiff        SNWORD;
 
 typedef QString         UText;
 typedef QWORD           EpochMilliseconds;
+typedef NWORD           Count;
+typedef SNWORD          Index;
 
 typedef size_t          Count;
 typedef qsizetype       Index;
