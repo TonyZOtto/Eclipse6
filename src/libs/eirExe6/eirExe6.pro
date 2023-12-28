@@ -37,6 +37,7 @@ SOURCES += \
     ConsoleStreamDisplay.cpp \
     ConsoleWindowApp.cpp \
     ExeSupport.cpp \
+    Settings.cpp \
     SignalRecipient.cpp \
     eirExe6.cpp
 
@@ -55,6 +56,7 @@ HEADERS += \
     ConsoleStreamDisplay.h \
     ConsoleWindowApp.h \
     ExeSupport.h \
+    Settings.h \
     SignalRecipient.h \
     eirExe6_global.h \
     eirExe6.h \

@@ -13,8 +13,3 @@ char AText::takeFirstChar()
     removeFirst();
     return result;
 }
-
-void AText::append(const char ch)
-{
-    if (ch) append(ch);
-}
