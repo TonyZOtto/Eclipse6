@@ -55,3 +55,4 @@ compile_commands.json
 *.stash
 *.exe
 *_resource.rc
+tmp
