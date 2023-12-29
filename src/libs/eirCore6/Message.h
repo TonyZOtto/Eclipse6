@@ -131,6 +131,8 @@ public: // const
 public: // static
     static QIcon icon(const Level level);
 
+
+
 private:
     void ctor();
     void formatMessage();
@@ -166,6 +168,8 @@ private:
     Q_PROPERTY(QDateTime sentTime READ sentTime CONSTANT FINAL)
     Q_PROPERTY(QDateTime receivedTime READ receivedTime CONSTANT FINAL)
     Q_PROPERTY(QString text READ text CONSTANT FINAL)
+    Q_PROPERTY(QString format READ format CONSTANT FINAL)
+    Q_PROPERTY(QVariantList variantList READ variantList CONSTANT FINAL)
 public:
     Uid msgUid() const
     {
@@ -206,5 +210,9 @@ public:
     QString format() const
     {
         return m_format;
+    }
+    QVariantList variantList() const
+    {
+        return m_variantList;
     }
 };

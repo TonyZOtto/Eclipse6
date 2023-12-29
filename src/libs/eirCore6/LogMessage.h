@@ -5,8 +5,7 @@
 
 #include <NanosecondsElapsed.h>
 
-#include "LogContext.h"
-#include "MessageTrackingItem.h"
+#include "FunctionInfo.h"
 
 class LogMessage : public Message
 {
@@ -21,18 +20,18 @@ public: // non-const
 
     // ====================== PROPERTIES ===================
 private:
-    LogContext m_logContext;
     NanosecondsElapsed m_msgNano;
-    Q_PROPERTY(LogContext logContext READ logContext CONSTANT FINAL)
+    FunctionInfo m_functionInfo;
     Q_PROPERTY(NanosecondsElapsed msgNano READ msgNano CONSTANT FINAL)
+    Q_PROPERTY(FunctionInfo functionInfo READ functionInfo CONSTANT FINAL)
 
 public:
-    LogContext logContext() const
-    {
-        return m_logContext;
-    }
     NanosecondsElapsed msgNano() const
     {
         return m_msgNano;
+    }
+    FunctionInfo functionInfo() const
+    {
+        return m_functionInfo;
     }
 };

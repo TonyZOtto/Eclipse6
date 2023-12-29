@@ -13,38 +13,17 @@ public:
     NanosecondsElapsed();
 
 public: // const
-    SQWORD nanoseconds() const
-    {
-        return duration().count();
-    }
-    SQWORD microseconds() const
-    {
-        return nanoseconds() / 1000;
-    }
-    SQWORD milliseconds() const
-    {
-        return microseconds() / 1000;
-    }
-    SQWORD seconds() const
-    {
-        return milliseconds() / 1000;
-    }
-    SQWORD minutes() const
-    {
-        return seconds() / 60;
-    }
-    SQWORD hours() const
-    {
-        return minutes() / 60;
-    }
-    QElapsedTimer::Duration duration() const
-    {
-        return mDuration;
-    }
-    operator < (const NanosecondsElapsed &other) const;
+    Nano nanoseconds() const;
+    Nano microseconds() const;
+    Nano milliseconds() const;
+    Nano seconds() const;
+    Nano minutes() const;
+    Nano hours() const;
+    QElapsedTimer::Duration duration() const;
+    bool operator < (const NanosecondsElapsed &other) const;
 
 public: // non-const
-    void sample();
+    QElapsedTimer::Duration sample();
 
 public:
     static QElapsedTimer::ClockType clockType();
@@ -57,4 +36,39 @@ private:
     static QElapsedTimer mElapsedTimer;
     QElapsedTimer::Duration mDuration;
 };
+
+inline Nano NanosecondsElapsed::nanoseconds() const
+{
+    return mDuration.count();
+}
+
+inline Nano NanosecondsElapsed::microseconds() const
+{
+    return nanoseconds() / 1000;
+}
+
+inline Nano NanosecondsElapsed::milliseconds() const
+{
+    return microseconds() / 1000;
+}
+
+inline Nano NanosecondsElapsed::seconds() const
+{
+    return milliseconds() / 1000;
+}
+
+inline Nano NanosecondsElapsed::minutes() const
+{
+    return seconds() / 60;
+}
+
+inline Nano NanosecondsElapsed::hours() const
+{
+    return minutes() / 60;
+}
+
+inline QElapsedTimer::Duration NanosecondsElapsed::duration() const
+{
+    return mDuration;
+}
 

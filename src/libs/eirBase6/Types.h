@@ -18,7 +18,7 @@ typedef quintptr        NWORD;
 typedef qptrdiff        SNWORD;
 
 typedef QString         UText;
-typedef QWORD           EpochMilliseconds;
+typedef SQWORD          Nano;
 typedef NWORD           Count;
 typedef SNWORD          Index;
 

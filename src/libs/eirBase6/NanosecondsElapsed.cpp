@@ -13,7 +13,7 @@ NanosecondsElapsed::NanosecondsElapsed()
     sample();
 }
 
-void NanosecondsElapsed::sample()
+QElapsedTimer::Duration NanosecondsElapsed::sample()
 {
 #ifdef QT_DEBUG
     Q_ASSERT_X(mElapsedTimer.isValid(), Q_FUNC_INFO, "Invalid Elapsed Timer");
@@ -21,6 +21,7 @@ void NanosecondsElapsed::sample()
     mDuration = mElapsedTimer.isValid()
         ? mElapsedTimer.durationElapsed()
         : QElapsedTimer::Duration();
+    return mDuration;
 }
 
 QElapsedTimer::ClockType NanosecondsElapsed::clockType()
@@ -33,7 +34,7 @@ bool NanosecondsElapsed::isMonotonic()
     return QElapsedTimer::isMonotonic();
 }
 
-NanosecondsElapsed::operator < (const NanosecondsElapsed &other) const
+bool NanosecondsElapsed::operator <(const NanosecondsElapsed &other) const
 {
     return nanoseconds() < other.nanoseconds();
 }

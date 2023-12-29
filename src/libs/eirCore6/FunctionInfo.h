@@ -9,7 +9,6 @@
 
 #include "Key.h"
 #include "KeySegList.h"
-#include "LogContext.h"
 
 class FunctionInfo
 {
@@ -41,11 +40,11 @@ public:
 
 public:
     FunctionInfo() {;}
-    FunctionInfo(const LogContext context);
+    FunctionInfo(const QMessageLogContext context);
 
 public:
     //! Supply Q_FUNC_INFO string to parser if default ctor was used.
-    void parse(const LogContext context);
+    void parse(const QMessageLogContext context);
 
 private:
     //! Parse Q_FUNC_INFO into component parts
@@ -63,8 +62,8 @@ private:
 
     // ====================== PROPERTIES ===================
 private:
-    LogContext m_context;
     QString m_qFuncInfo;
+    QString m_logCategory;
     QFileInfo m_fileInfo;
     int m_fileLine;
     Flags m_flags;
@@ -78,4 +77,5 @@ private:
     QString m_returnString;
     QMetaType m_returnType;
     QList<ArgumentInfo> m_arguments;
+    int m_contextVersion;
 };

@@ -7,6 +7,10 @@
 
 #include "LogMessage.h"
 
+/*
+Q_GLOBAL_STATIC(LOG, LogEngine)
+*/
+
 class EIRCORE6_EXPORT Log
 {
 

@@ -24,9 +24,9 @@ SOURCES += \
     KeySeg.cpp \
     KeySegList.cpp \
     Log.cpp \
-    LogContext.cpp \
     LogMessage.cpp \
     Message.cpp \
+    UidManager.cpp \
     Value.cpp \
     Variable.cpp \
     VariableList.cpp \
@@ -39,12 +39,13 @@ HEADERS += \
     KeySeg.h \
     KeySegList.h \
     Log.h \
-    LogContext.h \
     LogMacros.h \
     LogMessage.h \
     Message.h \
     MetaTypeSample.h \
+    Return.h \
     SafeList.h \
+    UidManager.h \
     Value.h \
     Variable.h \
     VariableList.h \

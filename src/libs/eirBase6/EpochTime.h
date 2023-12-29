@@ -21,7 +21,7 @@ public: // const
     operator SQWORD() const { return toSQWord(); }
 
 public: // non-const
-    clear();
+    void clear();
     void set(const SQWORD msec) { mMsec = msec; }
     void set(const QTime qtm) { mMsec = qtm.msec(); }
     void set(const QDateTime qdt) { mMsec = qdt.time().msec(); }
