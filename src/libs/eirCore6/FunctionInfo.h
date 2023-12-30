@@ -44,7 +44,9 @@ public:
 
 public:
     //! Supply Q_FUNC_INFO string to parser if default ctor was used.
-    void parse(const QMessageLogContext context);
+    void parse(const char * qfi, const char * fileName,
+               const char * category, const int fileLine,
+               const int contextVersion);
 
 private:
     //! Parse Q_FUNC_INFO into component parts

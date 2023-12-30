@@ -24,7 +24,6 @@ SOURCES += \
     KeySeg.cpp \
     KeySegList.cpp \
     Log.cpp \
-    LogMessage.cpp \
     Message.cpp \
     UidManager.cpp \
     Value.cpp \
@@ -40,7 +39,6 @@ HEADERS += \
     KeySegList.h \
     Log.h \
     LogMacros.h \
-    LogMessage.h \
     Message.h \
     MetaTypeSample.h \
     Return.h \

@@ -7,8 +7,10 @@
 #include <QSize>
 
 #include <EpochTime.h>
+#include <NanosecondsElapsed.h>
 #include <Uid.h>
 
+#include "FunctionInfo.h"
 #include "VariableMap.h"
 
 class EIRCORE6_EXPORT Message
@@ -121,24 +123,35 @@ public:
 
 public:
     explicit Message();
+    Message(const Key &key);
     Message(const Level level, const QString text, const Flags f=$nullFlag);
     Message(const Level level, const QString format,
             const QVariantList vars, const Flags f=$nullFlag);
 
 public: // const
     QPixmap iconPixmap(const QSize &sz) const;
+    QtMsgType qmt() const;
+
+public: // non-const
+    void set(const Key &key);
+    void set(const Uid uid);
+    void set(const Level level, const QString text, const Flags f=$nullFlag);
+    void set(const Level level, const QString format,
+             const QVariantList vars, const Flags f=$nullFlag);
+    void set(const Uid sender,  const Uid receiver);
+    void set(const QMessageLogContext &qmlc);
+    void sender(const Uid uid);
+    void receiver(const Uid uid);
 
 public: // static
     static QIcon icon(const Level level);
-
-
+    static QtMsgType qmt(const Level level);
 
 private:
     void ctor();
     void formatMessage();
 
 private: // static
-    static QtMsgType qmt(const Level level);
     static void loadIcons();
     static QIcon levelIcon(const Level level);
 
@@ -146,30 +159,23 @@ private: // static
     static QList<QIcon> smLevelIcons;
 
     // ====================== PROPERTIES ===================
-private:
+protected:
+    Uid m_uid;
+    NanosecondsElapsed m_msgNano;
     Uid m_msgUid;
+    Key m_msgKey;
     Level m_msgLevel;
     Flags m_msgFlags;
     Uid m_senderUid;
     Uid m_receiverUid;
-    QDateTime m_createdTime;
-    QDateTime m_sentTime;
-    QDateTime m_receivedTime;
+    EpochTime m_sentTime;
+    EpochTime m_receivedTime;
     QString m_text;
     QString m_format;
+    FunctionInfo m_functionInfo;
     QVariantList m_variantList;
     VariableMap m_variableMap;
-    Q_PROPERTY(Uid msgUid READ msgUid CONSTANT FINAL)
-    Q_PROPERTY(Level msgLevel READ msgLevel CONSTANT FINAL)
-    Q_PROPERTY(Flags msgFlags READ msgFlags CONSTANT FINAL)
-    Q_PROPERTY(Uid senderUid READ senderUid CONSTANT FINAL)
-    Q_PROPERTY(Uid receiverUid READ receiverUid CONSTANT FINAL)
-    Q_PROPERTY(QDateTime createdTime READ createdTime CONSTANT FINAL)
-    Q_PROPERTY(QDateTime sentTime READ sentTime CONSTANT FINAL)
-    Q_PROPERTY(QDateTime receivedTime READ receivedTime CONSTANT FINAL)
-    Q_PROPERTY(QString text READ text CONSTANT FINAL)
-    Q_PROPERTY(QString format READ format CONSTANT FINAL)
-    Q_PROPERTY(QVariantList variantList READ variantList CONSTANT FINAL)
+
 public:
     Uid msgUid() const
     {
@@ -183,33 +189,65 @@ public:
     {
         return m_msgFlags;
     }
+    NanosecondsElapsed msgNano() const
+    {
+        return m_msgNano;
+    }
     Uid senderUid() const
     {
         return m_senderUid;
+    }
+    void senderUid(const Uid &new_senderUid)
+    {
+        m_senderUid = new_senderUid;
     }
     Uid receiverUid() const
     {
         return m_receiverUid;
     }
-    QDateTime createdTime() const
+    void receiverUid(const Uid &new_receiverUid)
     {
-        return m_createdTime;
+        m_receiverUid = new_receiverUid;
     }
-    QDateTime sentTime() const
+    EpochTime sentTime() const
     {
         return m_sentTime;
     }
-    QDateTime receivedTime() const
+    void sentTime(const EpochTime &new_sentTime)
+    {
+        m_sentTime = new_sentTime;
+    }
+    EpochTime receivedTime() const
     {
         return m_receivedTime;
+    }
+    void receivedTime(const EpochTime &new_receivedTime)
+    {
+        m_receivedTime = new_receivedTime;
     }
     QString text() const
     {
         return m_text;
     }
+    void text(const QString &new_text)
+    {
+        m_text = new_text;
+    }
     QString format() const
     {
         return m_format;
+    }
+    void format(const QString &new_format)
+    {
+        m_format = new_format;
+    }
+    FunctionInfo functionInfo() const
+    {
+        return m_functionInfo;
+    }
+    void functionInfo(const FunctionInfo &new_functionInfo)
+    {
+        m_functionInfo = new_functionInfo;
     }
     QVariantList variantList() const
     {

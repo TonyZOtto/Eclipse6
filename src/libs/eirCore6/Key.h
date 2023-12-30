@@ -20,6 +20,7 @@ public:
     QString toString() const;
     operator QString() const { return toString(); }
     QString operator() () const { return toString(); }
+    friend  bool operator < (const Key lhs, const Key rhs);
 
 public:
     void clear() { mSegList.clear(); }

@@ -30,6 +30,12 @@ QPixmap Message::iconPixmap(const QSize &sz) const
     return icon(m_msgLevel).pixmap(sz);
 }
 
+QtMsgType Message::qmt() const
+{
+    return qmt(msgLevel());
+}
+
+// static
 QIcon Message::icon(const Level level)
 {
     QIcon result;
@@ -41,8 +47,8 @@ QIcon Message::icon(const Level level)
 
 void Message::ctor()
 {
-    m_msgUid = Uid();
-    m_createdTime = QDateTime::currentDateTime(); // TODO ClockCalendar
+    m_msgNano.sample();
+    m_msgUid = Uid(false);
     m_msgLevel = $nullLevel;
     m_msgFlags = $nullFlag;
     m_senderUid = Uid(true);
@@ -64,7 +70,7 @@ QtMsgType Message::qmt(const Level level)
     return result;
 }
 
-// static
+// private static
 void Message::loadIcons()
 {
     smLevelIcons.resize($maxLevel);
@@ -72,6 +78,7 @@ void Message::loadIcons()
   //      mLevelIcons[level] = levelIcon(level);
 }
 
+// private static
 QIcon Message::levelIcon(const Level level)
 {
     QIcon result;

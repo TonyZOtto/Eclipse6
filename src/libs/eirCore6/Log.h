@@ -5,8 +5,6 @@
 #include <QObject>
 #include <QMessageLogger>
 
-#include "LogMessage.h"
-
 /*
 Q_GLOBAL_STATIC(LOG, LogEngine)
 */
@@ -19,8 +17,8 @@ public:
 
 private:
     static void logMessageHandler(QtMsgType qmt,
-                                  const QMessageLogContext & context,
-                                  const QString & message);
+              const QMessageLogContext & context,
+              const QString & message);
 };
 
 

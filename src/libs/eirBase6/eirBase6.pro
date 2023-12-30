@@ -20,6 +20,8 @@ SOURCES += \
     Boolean.cpp \
     EpochTime.cpp \
     NanosecondsElapsed.cpp \
+    Success.cpp \
+    URL.cpp \
     VersionInfo.cpp \
     eirBase6.cpp \
     Uid.cpp
@@ -28,10 +30,14 @@ HEADERS += \
     AText.h \
     BaseError.h \
     Boolean.h \
+    DualMap.h \
     EpochTime.h \
     NanosecondsElapsed.h \
     Property.h \
+    Success.h \
     Types.h \
+    URL.h \
+    UidMap.h \
     VersionInfo.h \
     eirBase6_global.h \
     eirBase6.h \

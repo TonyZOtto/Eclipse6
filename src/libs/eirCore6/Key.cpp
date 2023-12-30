@@ -13,6 +13,11 @@ QString Key::toString() const
     return result;
 }
 
+bool operator < (const Key lhs, const Key rhs)
+{
+    return lhs.toString() < rhs.toString();
+}
+
 void Key::set(const char *pch)
 {
     set(AText(pch));
