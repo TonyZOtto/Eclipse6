@@ -14,6 +14,8 @@
 
 #include <Types.h>
 
+class ExeSupport;
+
 class EIREXE_EXPORT CommandLine : public QObject
 {
     Q_OBJECT
@@ -28,8 +30,8 @@ public:
     Q_FLAG(Flags)
 
 public:
-    CommandLine(QObject *parent);
-    CommandLine(const Flags f, QObject *parent = nullptr);
+    CommandLine(ExeSupport *parent);
+    CommandLine(const Flags f, ExeSupport *parent = nullptr);
 
 public: // const
     QStringList optionNames() const;

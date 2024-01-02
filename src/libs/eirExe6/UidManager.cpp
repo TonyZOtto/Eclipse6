@@ -1,6 +1,8 @@
 #include "UidManager.h"
 
-UidManager::UidManager(QObject *parent)
+#include "ExeSupport.h"
+
+UidManager::UidManager(ExeSupport *parent)
     : QObject{parent}
 {
     setObjectName("UidManager");
@@ -16,9 +18,20 @@ bool UidManager::contains(const Uid uid) const
     return mKeyUidDMap.contains(uid);
 }
 
-Uid UidManager::uid(const Key &key) const
+Uid UidManager::uid(const Key &key)
 {
+    if ( ! contains(key))
+        add(key);
     return mKeyUidDMap.uid(key);
+}
+
+Uid UidManager::uid(QObject *obj)
+{
+    Key tKey("Object");
+    AText tBA;
+    tBA.setNum(qptrdiff(obj), 16);
+    tKey.append(tBA);
+    return uid(tKey);
 }
 
 Key UidManager::key(const Uid uid) const
@@ -30,23 +43,25 @@ Uid UidManager::add(const Key &key)
 {
     Success success(true);
     success.test( ! contains(key));
-    const Uid cUid(false);
+    const Uid cUid;
     if (success)
         success.test(add(cUid, key));
     return success ? cUid : Uid();
 }
 
-Success UidManager::add(const Uid uid, const Key &key)
+Success UidManager::add(const Uid u, const Key &k)
 {
     Success success(true);
-    success.test( ! contains(uid));
-    success.test( ! contains(key));
+    success.test( ! contains(u));
+    success.test( ! contains(k));
     if (success)
     {
-        const Uid cUid = mKeyUidDMap.add(key);
+        const Uid cUid = mKeyUidDMap.add(k);
         success.test( ! cUid.isNull());
         if (success)
-            emit added(cUid, key);
+            emit added(cUid, k);
+        else
+            emit addFailed(uid(k), k);
     }
     return success;
 }

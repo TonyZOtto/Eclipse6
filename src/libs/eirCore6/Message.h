@@ -5,6 +5,8 @@
 #include <QIcon>
 #include <QList>
 #include <QSize>
+#include <QVariant>
+#include <QVariantList>
 
 #include <EpochTime.h>
 #include <NanosecondsElapsed.h>
@@ -121,31 +123,47 @@ public:
     Q_DECLARE_FLAGS(Flags, Flag)
     Q_FLAG(Flags)
 
+    typedef QList<Message> List;
+
 public:
     explicit Message();
     Message(const Key &key);
-    Message(const Level level, const QString text, const Flags f=$nullFlag);
-    Message(const Level level, const QString format,
-            const QVariantList vars, const Flags f=$nullFlag);
+    Message(char * qfi, char * filename, const int fileline,
+            const Level level, const Flags flags, const QString text);
+    Message(char * qfi, char * filename, const int fileline,
+            const Level level, const Flags flags, const QString format,
+            const QVariant var1, const QVariant var2,
+            const QVariant var3, const QVariant var4);
+    Message(char * qfi, char * filename, const int fileline,
+            const Level level, const Flags flags, const QString format,
+            const QVariantList vars);
 
 public: // const
     QPixmap iconPixmap(const QSize &sz) const;
     QtMsgType qmt() const;
 
 public: // non-const
-    void set(const Key &key);
-    void set(const Uid uid);
-    void set(const Level level, const QString text, const Flags f=$nullFlag);
-    void set(const Level level, const QString format,
-             const QVariantList vars, const Flags f=$nullFlag);
+    void set(char * qfi, char * filename, const int fileline,
+             const Level level, const Flags flags, const QString text);
+    void set(char * qfi, char * filename, const int fileline,
+             const Level level, const Flags flags, const QString format,
+             const QVariant var1, const QVariant var2,
+             const QVariant var3, const QVariant var4);
+    void set(char * qfi, char * filename, const int fileline,
+             const Level level, const Flags flags, const QString format,
+             const QVariantList vars);
+
+    void set(const Level level);
+    void set(char * qfi, char * filename, const int fileline);
+    void set(const Flags flags, const QString format,
+             const QVariantList vars);
+    void set(const Key &key, const Uid uid=Uid());
     void set(const Uid sender,  const Uid receiver);
-    void set(const QMessageLogContext &qmlc);
-    void sender(const Uid uid);
-    void receiver(const Uid uid);
 
 public: // static
     static QIcon icon(const Level level);
     static QtMsgType qmt(const Level level);
+
 
 private:
     void ctor();
@@ -175,11 +193,35 @@ protected:
     FunctionInfo m_functionInfo;
     QVariantList m_variantList;
     VariableMap m_variableMap;
-
+    Q_PROPERTY(Uid uid READ uid CONSTANT FINAL)
+    Q_PROPERTY(NanosecondsElapsed msgNano READ msgNano CONSTANT FINAL)
+    Q_PROPERTY(Uid msgUid READ msgUid CONSTANT FINAL)
+    Q_PROPERTY(Key msgKey READ msgKey CONSTANT FINAL)
+    Q_PROPERTY(Level msgLevel READ msgLevel CONSTANT FINAL)
+    Q_PROPERTY(Flags msgFlags READ msgFlags CONSTANT FINAL)
+    Q_PROPERTY(Uid senderUid READ senderUid CONSTANT FINAL)
+    Q_PROPERTY(Uid receiverUid READ receiverUid CONSTANT FINAL)
+    Q_PROPERTY(EpochTime sentTime READ sentTime CONSTANT FINAL)
+    Q_PROPERTY(EpochTime receivedTime READ receivedTime CONSTANT FINAL)
+    Q_PROPERTY(QString text READ text CONSTANT FINAL)
+    Q_PROPERTY(QString format READ format CONSTANT FINAL)
+    Q_PROPERTY(FunctionInfo functionInfo READ functionInfo CONSTANT FINAL)
 public:
+    Uid uid() const
+    {
+        return m_uid;
+    }
+    NanosecondsElapsed msgNano() const
+    {
+        return m_msgNano;
+    }
     Uid msgUid() const
     {
         return m_msgUid;
+    }
+    Key msgKey() const
+    {
+        return m_msgKey;
     }
     Level msgLevel() const
     {
@@ -189,68 +231,32 @@ public:
     {
         return m_msgFlags;
     }
-    NanosecondsElapsed msgNano() const
-    {
-        return m_msgNano;
-    }
     Uid senderUid() const
     {
         return m_senderUid;
-    }
-    void senderUid(const Uid &new_senderUid)
-    {
-        m_senderUid = new_senderUid;
     }
     Uid receiverUid() const
     {
         return m_receiverUid;
     }
-    void receiverUid(const Uid &new_receiverUid)
-    {
-        m_receiverUid = new_receiverUid;
-    }
     EpochTime sentTime() const
     {
         return m_sentTime;
-    }
-    void sentTime(const EpochTime &new_sentTime)
-    {
-        m_sentTime = new_sentTime;
     }
     EpochTime receivedTime() const
     {
         return m_receivedTime;
     }
-    void receivedTime(const EpochTime &new_receivedTime)
-    {
-        m_receivedTime = new_receivedTime;
-    }
     QString text() const
     {
         return m_text;
-    }
-    void text(const QString &new_text)
-    {
-        m_text = new_text;
     }
     QString format() const
     {
         return m_format;
     }
-    void format(const QString &new_format)
-    {
-        m_format = new_format;
-    }
     FunctionInfo functionInfo() const
     {
         return m_functionInfo;
-    }
-    void functionInfo(const FunctionInfo &new_functionInfo)
-    {
-        m_functionInfo = new_functionInfo;
-    }
-    QVariantList variantList() const
-    {
-        return m_variantList;
     }
 };

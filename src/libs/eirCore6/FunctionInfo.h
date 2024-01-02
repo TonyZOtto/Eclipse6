@@ -1,4 +1,6 @@
+//!file {Eclipse6}/root/src/libs/eirCore6/FunctionInfo.h Break down a Q_FUNC_INFO
 #pragma once
+#include "eirCore6.h"
 
 #include <QFileInfo>
 #include <QList>
@@ -10,10 +12,10 @@
 #include "Key.h"
 #include "KeySegList.h"
 
-class FunctionInfo
+class EIRCORE6_EXPORT FunctionInfo
 {
     Q_GADGET
-public:
+public: // types
     enum Flag
     {
         $$nullFlag          = 0,
@@ -38,15 +40,22 @@ public:
         KeySeg aiName;
     };
 
-public:
+public: // ctors
     FunctionInfo() {;}
     FunctionInfo(const QMessageLogContext context);
+    FunctionInfo(const char * qfi, const char * fileName,
+                 const char * category, const int fileLine,
+                 const int contextVersion=QMessageLogContext().version);
 
-public:
-    //! Supply Q_FUNC_INFO string to parser if default ctor was used.
+public: // const
+    QString fullFunction() const;
+    friend bool operator == (const FunctionInfo lhs, const FunctionInfo rhs);
+
+public: // non-const
     void parse(const char * qfi, const char * fileName,
                const char * category, const int fileLine,
-               const int contextVersion);
+               const int contextVersion=QMessageLogContext().version);
+
 
 private:
     //! Parse Q_FUNC_INFO into component parts
@@ -80,4 +89,76 @@ private:
     QMetaType m_returnType;
     QList<ArgumentInfo> m_arguments;
     int m_contextVersion;
+    Q_PROPERTY(QString qFuncInfo READ qFuncInfo CONSTANT FINAL)
+    Q_PROPERTY(QFileInfo fileInfo READ fileInfo CONSTANT FINAL)
+    Q_PROPERTY(int fileLine READ fileLine CONSTANT FINAL)
+    Q_PROPERTY(Flags flags READ flags CONSTANT FINAL)
+    Q_PROPERTY(QString anteMatter READ anteMatter CONSTANT FINAL)
+    Q_PROPERTY(QString names READ names CONSTANT FINAL)
+    Q_PROPERTY(QString argumentString READ argumentString CONSTANT FINAL)
+    Q_PROPERTY(QString postMatter READ postMatter CONSTANT FINAL)
+    Q_PROPERTY(QString nameSpace READ nameSpace CONSTANT FINAL)
+    Q_PROPERTY(Key className READ className CONSTANT FINAL)
+    Q_PROPERTY(Key functionName READ functionName CONSTANT FINAL)
+    Q_PROPERTY(QString returnString READ returnString CONSTANT FINAL)
+    Q_PROPERTY(QMetaType returnType READ returnType CONSTANT FINAL)
+public:
+    QString qFuncInfo() const
+    {
+        return m_qFuncInfo;
+    }
+    QFileInfo fileInfo() const
+    {
+        return m_fileInfo;
+    }
+    int fileLine() const
+    {
+        return m_fileLine;
+    }
+    Flags flags() const
+    {
+        return m_flags;
+    }
+    QString anteMatter() const
+    {
+        return m_anteMatter;
+    }
+    QString names() const
+    {
+        return m_names;
+    }
+    QString argumentString() const
+    {
+        return m_argumentString;
+    }
+    QString postMatter() const
+    {
+        return m_postMatter;
+    }
+    QString nameSpace() const
+    {
+        return m_nameSpace;
+    }
+    Key className() const
+    {
+        return m_className;
+    }
+    Key functionName() const
+    {
+        return m_functionName;
+    }
+    QString returnString() const
+    {
+        return m_returnString;
+    }
+    QMetaType returnType() const
+    {
+        return m_returnType;
+    }
 };
+
+inline bool operator == (const FunctionInfo lhs, const FunctionInfo rhs)
+{
+    return lhs.qFuncInfo() == rhs.qFuncInfo();
+}
+

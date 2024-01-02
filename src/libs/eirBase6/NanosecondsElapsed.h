@@ -19,6 +19,9 @@ public: // const
     Nano seconds() const;
     Nano minutes() const;
     Nano hours() const;
+    Nano days() const;
+    Nano years() const;
+    Nano centurys() const;
     QElapsedTimer::Duration duration() const;
     bool operator < (const NanosecondsElapsed &other) const;
 
@@ -44,27 +47,45 @@ inline Nano NanosecondsElapsed::nanoseconds() const
 
 inline Nano NanosecondsElapsed::microseconds() const
 {
-    return nanoseconds() / 1000;
+    return nanoseconds() / nanoPerMicroSecond;
 }
 
 inline Nano NanosecondsElapsed::milliseconds() const
 {
-    return microseconds() / 1000;
+    return nanoseconds() / nanoPerMilliSecond;
 }
 
 inline Nano NanosecondsElapsed::seconds() const
 {
-    return milliseconds() / 1000;
+    return nanoseconds() / nanoPerSecond;
 }
 
 inline Nano NanosecondsElapsed::minutes() const
 {
-    return seconds() / 60;
+    return nanoseconds() / nanoPerMinute;
 }
 
 inline Nano NanosecondsElapsed::hours() const
 {
-    return minutes() / 60;
+    return nanoseconds() / nanoPerHour;
+}
+
+inline Nano NanosecondsElapsed::days() const
+{
+    return nanoseconds() / nanoPerDay;
+
+}
+
+inline Nano NanosecondsElapsed::years() const
+{
+    return nanoseconds() / nanoPerYear;
+
+}
+
+inline Nano NanosecondsElapsed::centurys() const
+{
+    return nanoseconds() / nanoPerCentury;
+
 }
 
 inline QElapsedTimer::Duration NanosecondsElapsed::duration() const

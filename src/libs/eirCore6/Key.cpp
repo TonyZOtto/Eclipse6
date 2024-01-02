@@ -13,10 +13,12 @@ QString Key::toString() const
     return result;
 }
 
+#if 0
 bool operator < (const Key lhs, const Key rhs)
 {
     return lhs.toString() < rhs.toString();
 }
+#endif
 
 void Key::set(const char *pch)
 {

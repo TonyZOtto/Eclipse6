@@ -17,9 +17,11 @@ void Log::logMessageHandler(QtMsgType qmt,
 {
     QTextStream cerr(stderr, QIODevice::WriteOnly);
     cerr << "{" << message << "} QtMsgType = " << qmt;
-    cerr << " context: version = " << context.version << " line = " << context.line;
-    cerr << " file = " << context.file << " function = " << context.function;
-    cerr << " category = " << context.category;
-    cerr << Qt::endl;
+    cerr << "^< context: version = " << context.version
+         << " line = " << context.line
+         << " file = " << context.file
+         << " function = " << context.function
+         << " category = " << context.category;
+    cerr << " >" << Qt::endl;
 }
 

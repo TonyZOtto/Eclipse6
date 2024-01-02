@@ -3,9 +3,9 @@ message(------------/src/version.pri)
 
 EIRVER_MAJOR        = 6
 EIRVER_MINOR        = 90
-EIRVER_BRANCH       = 15
+EIRVER_BRANCH       = 0
 EIRVER_RELEASE      = 1
-EIRVER_STRING       = "v6.90A+0015"
+EIRVER_STRING       = "v6.90A"
 EIRVER_COMPANY      = "Eclipse Identity Recognition Corporation"
 EIRVER_ORGNAME      = "EclipseIR"
 EIRVER_COPYRIGHT    = "Copyright (c) 1993-2023, Eclipse Identity Recognition Corporation. All rights reserved worldwide. See LEGAL.txt for more information."

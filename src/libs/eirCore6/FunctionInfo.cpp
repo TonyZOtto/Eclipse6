@@ -2,12 +2,27 @@
 
 FunctionInfo::FunctionInfo(const QMessageLogContext context)
 {
-    m_qFuncInfo = QString(context.function),
-        m_fileInfo = QFileInfo(context.file),
-        m_fileLine = context.line,
-        m_logCategory = QString(context.category),
-        m_contextVersion = context.version;
-    parse();
+    parse(context.function, context.file, context.category,
+          context.line, context.version);
+}
+
+FunctionInfo::FunctionInfo(const char *qfi,
+                           const char *fileName,
+                           const char *category,
+                           const int fileLine,
+                           const int contextVersion)
+{
+    parse(qfi, fileName, category, fileLine, contextVersion);
+}
+
+QString FunctionInfo::fullFunction() const
+{
+    QString result;
+    result += functionName();
+    result += "(";
+    // TODO foreach(argument)
+    result += ")";
+    return result;
 }
 
 void FunctionInfo::parse(const char *qfi,

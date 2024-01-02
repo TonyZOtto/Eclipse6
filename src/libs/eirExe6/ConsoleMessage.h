@@ -8,10 +8,23 @@ class ConsoleMessage : public Message
 {
     Q_GADGET
 public:
+    enum FormatFlag
+    {
+        $nullFormat = 0,
+    };
+    Q_DECLARE_FLAGS(FormatFlags, FormatFlag)
+    Q_FLAG(FormatFlags);
 
+public: // ctors
+    explicit ConsoleMessage(const Message &msg=Message());
 
-public:
-    explicit ConsoleMessage();
+public: // const
+    QString context(const FormatFlags fflags=$nullFormat) const;
+    QString text(const FormatFlags fflags=$nullFormat) const;
+
+public: // non-const
+
+public slots:
 
 signals:
 

@@ -23,10 +23,10 @@ Uid UidMap<T>::add(const T &t, const bool okReplace)
 {
     Success success(true);
     success.test( ! DualMap<Uid, T>::contains(t) || okReplace);
-    const Uid cUid(false);
+    const Uid cUid(Uid::VersionRandom);
     if (success)
         success.test(DualMap<Uid, T>::add(cUid, t));
-    return success ? cUid : Uid(true);
+    return success ? cUid : Uid();
 }
 
 template<typename T>

@@ -7,6 +7,7 @@
 #include <EpochTime.h>
 #include <Uid.h>
 
+#include "ExeSupport.h"
 #include "SignalRecipient.h"
 
 class EIREXE_EXPORT ClockCalendar : public QObject
@@ -15,7 +16,7 @@ class EIREXE_EXPORT ClockCalendar : public QObject
 public: // types
 
 public: // ctors
-    explicit ClockCalendar(QObject *parent = nullptr);
+    explicit ClockCalendar(ExeSupport *parent = nullptr);
 
 public slots:
     void signalAt(const Uid uid, const QDateTime dt);

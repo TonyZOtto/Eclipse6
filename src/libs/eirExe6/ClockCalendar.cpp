@@ -1,6 +1,8 @@
 #include "ClockCalendar.h"
 
-ClockCalendar::ClockCalendar(QObject *parent)
+#include "ExeSupport.h"
+
+ClockCalendar::ClockCalendar(ExeSupport *parent)
     : QObject{parent}
 {
     setObjectName("ClockCalendar");

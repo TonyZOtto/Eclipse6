@@ -1,10 +1,30 @@
 #include "uid.h"
 
-//Uid::Uid() {;} // null QUuid()
+//Uid::Uid() {;} // fl QUuid()
 
-Uid::Uid(const bool null)
+Uid::Uid(const Flags fs)
+    : mFlags(fs)
 {
-    mUuid = null ? QUuid() : QUuid::createUuid();
+    QUuid::Version tVersion = QUuid::VerUnknown;
+    if (flag(Uid::VersionRandom))           tVersion = QUuid::Random;
+    else if (flag(Uid::VersionSequential))  tVersion = QUuid::Random;
+    else if (flag(Uid::VersionTimebased))   tVersion = QUuid::Time;
+    // else leave invalid
+
+    if (QUuid::VerUnknown != tVersion)
+        mUuid = QUuid::createUuid();
+    // else leave null
+    version(tVersion);
+}
+
+bool Uid::flag(const Flag fl) const
+{
+    return mFlags.testFlag(fl);
+}
+
+QString Uid::tail() const
+{
+    return mUuid.toString().right(12);
 }
 
 bool Uid::operator == (const Uid other) const
@@ -16,10 +36,11 @@ bool Uid::operator < (const Uid other) const
 {
     return mUuid < other.mUuid;
 }
-#if 0
-bool operator < (const Uid lhs, const Uid rhs)
-{
-    return lhs.data() < rhs.data();
-}
 
-#endif
+void Uid::version(const QUuid::Version ver)
+{
+    Union u;
+    u.uOword = data();
+    u.sVersion = ver;
+    data(u.uOword);
+}

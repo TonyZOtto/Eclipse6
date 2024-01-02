@@ -20,6 +20,7 @@ SOURCES += \
     Boolean.cpp \
     EpochTime.cpp \
     NanosecondsElapsed.cpp \
+    ObjectHelper.cpp \
     Success.cpp \
     URL.cpp \
     VersionInfo.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     DualMap.h \
     EpochTime.h \
     NanosecondsElapsed.h \
+    ObjectHelper.h \
     Property.h \
     Success.h \
     Types.h \
