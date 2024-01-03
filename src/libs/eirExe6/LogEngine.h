@@ -15,6 +15,9 @@ class EIREXE_EXPORT LogEngine : public QObject
 public:
     explicit LogEngine(QObject *parent = nullptr);
 
+public: // const
+    LogMessageQueue * inputQueue() const;
+
 public: // non-const
     void add(Message msg, QObject *sender=nullptr);
 

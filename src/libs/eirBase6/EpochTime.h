@@ -3,6 +3,7 @@
 #include "eirBase6.h"
 
 #include <QDateTime>
+#include <QString>
 #include <QTime>
 
 #include "Types.h"
@@ -16,6 +17,8 @@ public:
     EpochTime(const QDateTime qdt) : mMsec(qdt.time().msec()) {;}
 
 public: // const
+    QDateTime toDateTime() const;
+    QString toString(Qt::DateFormat format = Qt::TextDate) const;
     SQWORD toSQWord() const { return mMsec; }
     SQWORD operator() () const { return toSQWord(); }
     operator SQWORD() const { return toSQWord(); }
@@ -32,3 +35,13 @@ public: // static
 private:
     SQWORD mMsec;
 };
+
+inline QDateTime EpochTime::toDateTime() const
+{
+    return QDateTime::fromMSecsSinceEpoch(mMsec);
+}
+
+inline QString EpochTime::toString(Qt::DateFormat format) const
+{
+    return toDateTime().toString(format);
+}

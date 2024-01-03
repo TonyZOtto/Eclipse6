@@ -6,6 +6,10 @@
 #include "CommandLine.h"
 #include "UidManager.h"
 
+#include "LogMacros.h"
+#include <LogEngine.h>
+Q_GLOBAL_STATIC(LogEngine, LOG)
+
 ExeSupport::ExeSupport(QObject *parent)
     : QObject{parent}
     , mpUidManager(new UidManager(this))
@@ -20,6 +24,9 @@ ExeSupport::ExeSupport(QObject *parent)
     Q_ASSERT_X(mpArguments, "ExeSupport ctor", "Invalid AppArguments child");
     Q_ASSERT_X(mpSettings, "ExeSupport ctor", "Invalid AppSettings child");
     Q_ASSERT_X(mpCommandLine, "ExeSupport ctor", "Invalid CommandLine child");
+    qInfo("qInfo message");
+    INFOMSG("INFOMSG message");
+    PROGRESS("PROGRESS message");
 }
 
 Uid ExeSupport::uid(const Key &key)

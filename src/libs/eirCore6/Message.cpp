@@ -9,8 +9,8 @@ Message::Message()
 {
 }
 
-Message::Message(char * qfi, char * filename, const int fileline,
-            const Level level, const Flags flags, const QString text)
+Message::Message(const char *qfi, const char *filename, const int fileline,
+            const Level level, const Flags flags, const char *text)
 {
     set(qfi, filename, fileline, level, flags, text);
 }
@@ -26,8 +26,8 @@ QtMsgType Message::qmt() const
 }
 
 
-void Message::set(char *qfi, char *filename, const int fileline,
-        const Level level, const Flags flags, const QString text)
+void Message::set(const char *qfi, const char *filename, const int fileline,
+        const Level level, const Flags flags, const char *text)
 {
     set(qfi, filename, fileline, level, flags, text, QVariantList());
 }
@@ -50,7 +50,7 @@ void Message::set(char *qfi, char *filename, const int fileline,
     set(qfi, filename, fileline, level, flags, format, tVars);
 }
 
-void Message::set(char *qfi, char *filename, const int fileline,
+void Message::set(const char *qfi, const char *filename, const int fileline,
         const Level level, const Flags flags, const QString format,
         const QVariantList vars)
 {
@@ -66,7 +66,7 @@ void Message::set(const Level level)
     m_msgLevel = level;
 }
 
-void Message::set(char *qfi, char *filename, const int fileline)
+void Message::set(const char *qfi, const char *filename, const int fileline)
 {
     m_functionInfo.parse(qfi, filename, NULL, fileline);
 }

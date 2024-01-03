@@ -15,6 +15,10 @@ private:
     static void logMessageHandler(QtMsgType qmt,
               const QMessageLogContext & context,
               const QString & message);
+    static QString qMsgTypeName(const QtMsgType qmt);
+
+
+
 };
 
 

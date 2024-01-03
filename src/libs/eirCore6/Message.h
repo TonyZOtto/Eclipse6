@@ -128,8 +128,8 @@ public:
 public:
     explicit Message();
     Message(const Key &key);
-    Message(char * qfi, char * filename, const int fileline,
-            const Level level, const Flags flags, const QString text);
+    Message(const char * qfi, const char * filename, const int fileline,
+            const Level level, const Flags flags, const char * text);
     Message(char * qfi, char * filename, const int fileline,
             const Level level, const Flags flags, const QString format,
             const QVariant var1, const QVariant var2,
@@ -143,18 +143,18 @@ public: // const
     QtMsgType qmt() const;
 
 public: // non-const
-    void set(char * qfi, char * filename, const int fileline,
-             const Level level, const Flags flags, const QString text);
+    void set(const char * qfi, const char * filename, const int fileline,
+             const Level level, const Flags flags, const char * text);
     void set(char * qfi, char * filename, const int fileline,
              const Level level, const Flags flags, const QString format,
              const QVariant var1, const QVariant var2,
              const QVariant var3, const QVariant var4);
-    void set(char * qfi, char * filename, const int fileline,
+    void set(const char * qfi, const char * filename, const int fileline,
              const Level level, const Flags flags, const QString format,
              const QVariantList vars);
 
     void set(const Level level);
-    void set(char * qfi, char * filename, const int fileline);
+    void set(const char * qfi, const char * filename, const int fileline);
     void set(const Flags flags, const QString format,
              const QVariantList vars);
     void set(const Key &key, const Uid uid=Uid());
