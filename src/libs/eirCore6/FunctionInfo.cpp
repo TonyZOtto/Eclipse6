@@ -1,46 +1,22 @@
 #include "FunctionInfo.h"
 
-FunctionInfo::FunctionInfo(const QMessageLogContext context)
+FunctionInfo::FunctionInfo(const LogContext context)
+    : m_context(context)
 {
-    parse(context.function, context.file, context.category,
-          context.line, context.version);
+    parse();
 }
 
-FunctionInfo::FunctionInfo(const char *qfi,
-                           const char *fileName,
-                           const char *category,
-                           const int fileLine,
-                           const int contextVersion)
+void FunctionInfo::parse(const LogContext context)
 {
-    parse(qfi, fileName, category, fileLine, contextVersion);
-}
-
-QString FunctionInfo::fullFunction() const
-{
-    QString result;
-    result += functionName();
-    result += "(";
-    // TODO foreach(argument)
-    result += ")";
-    return result;
-}
-
-void FunctionInfo::parse(const char *qfi,
-                         const char *fileName,
-                         const char *category,
-                         const int fileLine,
-                         const int contextVersion)
-{
-    m_qFuncInfo = QString(qfi),
-        m_fileInfo = QFileInfo(fileName),
-        m_fileLine = fileLine,
-        m_logCategory = QString(category),
-        m_contextVersion = contextVersion;
+    m_context = context;
     parse();
 }
 
 void FunctionInfo::parse()
 {
+    m_qFuncInfo = m_context.functionInfo().m_qFuncInfo;
+    m_fileInfo = QFileInfo(m_context().m_fileName);
+    m_fileLine = m_context.lineNumber();
     initialSplit();
     handleAnte();
     handleNames();

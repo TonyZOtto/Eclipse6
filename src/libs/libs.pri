@@ -1,6 +1,1 @@
-# {Eclipse6}/src/libs/libs.pri
-message(____________/src/libs/libs.pri)
-
-LIBDIR = "../../libs"
-
-include(../src.pri)
+³_5øŽ¤`{h#n™ìjÍïŒ%ÄKM÷u†§"ú™ƒ*áßXº‚ó!…Øc©Ë>×P^¼8qÒ¤]»y³bõé‡â„I£vùæÂÊÑ—n‰ìfÍêÕ$F‹rçeŠ«'?Z;,]Íù•‚ï!ŒeÊ«

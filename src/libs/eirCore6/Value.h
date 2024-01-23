@@ -13,4 +13,5 @@ private:
     QMetaType mMetaType;
     QVariant mVariant;
     QVariant mDefault;
+
 };

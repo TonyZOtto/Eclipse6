@@ -1,6 +1,1 @@
-# {Eclipse6}/src/desktop/desktop.pri
-message(^^^^/src/desktop/desktop.pri)
-
-include(../src.pri)
-
-LIBDIR = "../../libs"
+Û›O+tgH*¶Ÿ6èÎŽÔd_kx/bœ)©ÞþØ@Z°;4WMþµ€w &˜ê‹'D³K5÷W¾‚ða„(c^©ø~Â Q¸<r‘å¬K=÷Q†¼bñé„NãtIçvÊ¦×:Þ“mÊ­—=®‘¼lqíäM‹u§g:ª“?-Ð

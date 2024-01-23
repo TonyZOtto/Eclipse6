@@ -2,21 +2,16 @@
 #pragma once
 #include "eirExe6.h"
 
-
-/* in .cpp file
-#include "ExeSupport.h"
-Q_GLOBAL_STATIC(ExeSupport, EXE)
-*/
-
-#include <Uid.h>
-#include <Key.h>
-
-#include "Log.h"
 class AppArguments;
 class AppSettings;
 class ClockCalendar;
 class CommandLine;
-class UidManager;
+
+#include <Log.h>
+
+/*
+Q_GLOBAL_STATIC(EXE, ExeSupport)
+*/
 
 class EIREXE_EXPORT ExeSupport : public QObject
 {
@@ -25,14 +20,10 @@ public:
     explicit ExeSupport(QObject *parent = nullptr);
 
 public:
-    Uid uid(const Key &key);
-    Uid uid(QObject * obj);
-    Key key(const Uid uid);
 
 signals:
 
 private:
-    UidManager * mpUidManager=nullptr;
     ClockCalendar * mpClockCalendar=nullptr;
     AppArguments * mpArguments=nullptr;
     AppSettings * mpSettings=nullptr;

@@ -1,4 +1,1 @@
-TEMPLATE = subdirs
-
-SUBDIRS += \
-    If6Engine
+V‘þì@Mð5„#N™ôjÇo¬½Å±“4m×mž­¨}¾¡°xt"§Yººó3ÕÃÈ

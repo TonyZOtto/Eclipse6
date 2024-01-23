@@ -1,6 +1,2 @@
-# {Eclipse6}/src/CVMAJOR.pri
-#warning("TODO: CVMAJOR value")
-CVMAJOR = "CV0"
-message(............/src/CVMAJOR.pri = $$CVMAJOR)
-
-
+2Ϊ•›/+\yΘ"Φ™κθO΄wCf±κτOt§AΊ°s4%Χ[»Hsv¥ζϋ
+ΓGςE¥σ;ΣCρΙ„Vγ~ΙΰVΘ>Φ^μ8MÒµ·)¶φθFΞ²Τug(*(h®|f΅κψO΄·@v°&τΗK·M¶µ¶χ6Ζ–Òξέ

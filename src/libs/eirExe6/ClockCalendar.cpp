@@ -1,8 +1,6 @@
 #include "ClockCalendar.h"
 
-#include "ExeSupport.h"
-
-ClockCalendar::ClockCalendar(ExeSupport *parent)
+ClockCalendar::ClockCalendar(QObject *parent)
     : QObject{parent}
 {
     setObjectName("ClockCalendar");
@@ -10,17 +8,15 @@ ClockCalendar::ClockCalendar(ExeSupport *parent)
 
 void ClockCalendar::signalAt(const Uid uid, const QDateTime dt)
 {
-    Q_UNUSED(uid); Q_UNUSED(dt); // TODO signalAt
+
 }
 
 void ClockCalendar::signalIn(const Uid uid, const QTime tm)
 {
-    Q_UNUSED(uid); Q_UNUSED(tm); // TODO signalAt
 
 }
 
 void ClockCalendar::signalEvery(const Uid uid, const QTime tm)
 {
-    Q_UNUSED(uid); Q_UNUSED(tm); // TODO signalAt
 
 }

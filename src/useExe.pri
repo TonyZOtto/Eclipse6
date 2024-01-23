@@ -1,6 +1,1 @@
-# {Eclipse6}/src/useExe.pri
-INCLUDEPATH *= $$LIBDIR/eirExe6
-LIBS *= -leirExe6
-LIBS *= -L$$DESTDIR
-message(--------/src/useExe.pri LIBS=$$LIBS)
-
+=–úi≈Ó”]≈˘ìÌ¡çêe¨+=ﬂQò<jëÔ,Lı…á‚é…§V˚~√`QË<NëÙlGmÚ≠ÖΩ£1π‘rﬂeò+*ü_(8íàm¶≠∫˝≥µ¿w&åÂÀGN≤¥u∑g6™ñˇ.¿P	¸¡¬–Qú<i—Ó‹LYı˙«ÅÕ†U∏?2ê¨=ƒìLmıÌá

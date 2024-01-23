@@ -1,7 +1,1 @@
-TEMPLATE = subdirs
-
-SUBDIRS += \
-    eirBase6 \
-    eirCore6 \
-    eirExe6 \
-	
+ôI‡vâ¦ÉºÖóÅÈS½Îñ”Dosl%íÛ›E«s?eĞ+IÈ6Ö–ŞîØLZµû7Vşà@H06”ïNÌ4U× x¢‚ù¡‚øa‚¨a¾¨p

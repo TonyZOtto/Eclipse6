@@ -1,5 +1,1 @@
-# {Eclipse6}/src/BINDIR.pri
-BINDIR = "/bin"
-message(............/src/BINDIR.pri = $$BINDIR)
-
-
+	ØÚ‚Û!›Xkz¯c<)ÑÞÜXYúºÃ3ÕÌ_ø„£@yð"Ä“Jí÷†…¢ã9‰ÒæÝŠÙ§ú‹'AÚ°[4;WS~½àqˆ$f›jëol-Ã]‘ù¬Býñ„`ch

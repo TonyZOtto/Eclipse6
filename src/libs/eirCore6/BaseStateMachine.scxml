@@ -9,47 +9,38 @@
         <transition type="external" event="InitConfig" target="Configuring">
             <qt:editorinfo stateColor="#45bf08"/>
         </transition>
-        <transition type="external" event="TerminateInit" target="Terminating">
-            <qt:editorinfo stateColor="#cc5664" movePoint="103;4.08" endTargetFactors="82.64;38.94"/>
-        </transition>
     </state>
     <state id="Idle">
         <qt:editorinfo stateColor="#e0e0ff" scenegeometry="605.94;322.10;545.93;268.35;120;222.13" geometry="605.94;322.10;-60.01;-53.75;120;222.13"/>
         <transition type="external" event="Configure" target="Configuring">
-            <qt:editorinfo movePoint="-57.10;50.09" endTargetFactors="25.41;80.88"/>
+            <qt:editorinfo endTargetFactors="25.41;80.88" movePoint="2.05;32.75"/>
         </transition>
         <transition type="external" event="Run" target="Running">
-            <qt:editorinfo startTargetFactors="8.61;59.04" stateColor="#45bf08" movePoint="-3.07;7.16" endTargetFactors="74.60;60.46"/>
+            <qt:editorinfo endTargetFactors="74.60;60.46" stateColor="#45bf08" movePoint="-3.07;7.16" startTargetFactors="8.61;59.04"/>
         </transition>
-        <transition type="external" event="TerminateIdle" target="Terminating">
-            <qt:editorinfo startTargetFactors="8.61;22.34" stateColor="#cc5664" movePoint="43.16;12.33" endTargetFactors="78.85;57.94"/>
+        <transition type="external" event="TerminateReady" target="Terminating">
+            <qt:editorinfo endTargetFactors="78.85;57.94" stateColor="#cc5664" movePoint="90.07;26.61" startTargetFactors="8.61;22.34"/>
         </transition>
         <transition type="external" event="SetUp" target="SettingUp">
-            <qt:editorinfo startTargetFactors="87.63;81.94" endTargetFactors="21.47;67.86"/>
-        </transition>
-        <transition type="external" event="Finish" target="Final_1">
-            <qt:editorinfo stateColor="#45bf08" movePoint="18.36;70.37"/>
+            <qt:editorinfo endTargetFactors="21.47;67.86" startTargetFactors="87.63;81.94"/>
         </transition>
     </state>
     <state id="Configuring">
         <qt:editorinfo stateColor="#dfd3b6" scenegeometry="968.27;163.77;905.83;113.77;131.44;221.95" geometry="968.27;163.77;-62.44;-50;131.44;221.95"/>
         <transition type="external" event="Configured" target="Idle">
-            <qt:editorinfo movePoint="9.21;-22.52" endTargetFactors="48.50;21.76"/>
+            <qt:editorinfo endTargetFactors="48.50;21.76" movePoint="9.21;-22.52"/>
         </transition>
         <transition type="external" event="ConfigSetUp" target="SettingUp">
-            <qt:editorinfo startTargetFactors="49.06;88.03" stateColor="#45bf08"/>
-        </transition>
-        <transition type="external" event="TerminateConfig" target="Terminating">
-            <qt:editorinfo stateColor="#cc5664" endTargetFactors="81.27;49.49" localGeometry="-290.32;-12.63"/>
+            <qt:editorinfo stateColor="#45bf08" startTargetFactors="49.06;88.03"/>
         </transition>
     </state>
     <state id="Running">
         <qt:editorinfo stateColor="#e0e0ff" scenegeometry="366.43;321.63;306.43;271.63;120;215.57" geometry="366.43;321.63;-60;-50;120;215.57"/>
         <transition type="external" event="Pause" target="Paused">
-            <qt:editorinfo stateColor="#c0c000" movePoint="10.24;-27.64" endTargetFactors="73.93;36.88"/>
+            <qt:editorinfo endTargetFactors="73.93;36.88" stateColor="#c0c000" movePoint="10.24;-27.64"/>
         </transition>
         <transition type="external" event="Stop" target="Idle">
-            <qt:editorinfo startTargetFactors="94.15;36.47" endTargetFactors="10.78;35.07"/>
+            <qt:editorinfo endTargetFactors="10.78;35.07" startTargetFactors="94.15;36.47"/>
         </transition>
         <transition type="external" event="TerminateRunning" target="Terminating">
             <qt:editorinfo stateColor="#cc5664" movePoint="26.61;28.66"/>
@@ -58,10 +49,10 @@
     <state id="Paused">
         <qt:editorinfo stateColor="#e0e0ff" scenegeometry="164.79;321.40;113.79;271.40;120;214.78" geometry="164.79;321.40;-51;-50;120;214.78"/>
         <transition type="external" event="Resume" target="Running">
-            <qt:editorinfo stateColor="#3467ba" movePoint="-8.19;30.71" endTargetFactors="29.44;65.80"/>
+            <qt:editorinfo endTargetFactors="29.44;65.80" stateColor="#3467ba" movePoint="-8.19;30.71"/>
         </transition>
         <transition type="external" event="TerminatePause" target="Terminating">
-            <qt:editorinfo stateColor="#cc5664" movePoint="7.16;3.07" endTargetFactors="21.83;66.76"/>
+            <qt:editorinfo endTargetFactors="21.83;66.76" stateColor="#cc5664" movePoint="7.16;3.07"/>
         </transition>
     </state>
     <state id="Terminating">
@@ -72,11 +63,8 @@
     </state>
     <state id="SettingUp">
         <qt:editorinfo stateColor="#dfd3b6" scenegeometry="971.55;443.20;902.55;393.20;138;221.95" geometry="971.55;443.20;-69;-50;138;221.95"/>
-        <transition type="external" event="SetUped" target="Idle">
-            <qt:editorinfo stateColor="#45bf08" endTargetFactors="70.33;50.99"/>
-        </transition>
-        <transition type="external" event="TerminateSetup" target="Terminating">
-            <qt:editorinfo stateColor="#cc5664" movePoint="73.43;56.09" endTargetFactors="77.85;61.80" localGeometry="-291.34;-269.62"/>
+        <transition type="external" event="SetUpd" target="Idle">
+            <qt:editorinfo endTargetFactors="70.33;50.99" stateColor="#45bf08"/>
         </transition>
     </state>
 </scxml>

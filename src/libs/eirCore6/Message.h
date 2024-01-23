@@ -5,14 +5,10 @@
 #include <QIcon>
 #include <QList>
 #include <QSize>
-#include <QVariant>
-#include <QVariantList>
 
 #include <EpochTime.h>
-#include <NanosecondsElapsed.h>
 #include <Uid.h>
 
-#include "FunctionInfo.h"
 #include "VariableMap.h"
 
 class EIRCORE6_EXPORT Message
@@ -123,53 +119,24 @@ public:
     Q_DECLARE_FLAGS(Flags, Flag)
     Q_FLAG(Flags)
 
-    typedef QList<Message> List;
-
 public:
     explicit Message();
-    Message(const Key &key);
-    Message(const char * qfi, const char * filename, const int fileline,
-            const Level level, const Flags flags, const char * text);
-    Message(char * qfi, char * filename, const int fileline,
-            const Level level, const Flags flags, const QString format,
-            const QVariant var1, const QVariant var2,
-            const QVariant var3, const QVariant var4);
-    Message(char * qfi, char * filename, const int fileline,
-            const Level level, const Flags flags, const QString format,
-            const QVariantList vars);
+    Message(const Level level, const QString text, const Flags f=$nullFlag);
+    Message(const Level level, const QString format,
+            const QVariantList vars, const Flags f=$nullFlag);
 
 public: // const
     QPixmap iconPixmap(const QSize &sz) const;
-    QtMsgType qmt() const;
-
-public: // non-const
-    void set(const char * qfi, const char * filename, const int fileline,
-             const Level level, const Flags flags, const char * text);
-    void set(char * qfi, char * filename, const int fileline,
-             const Level level, const Flags flags, const QString format,
-             const QVariant var1, const QVariant var2,
-             const QVariant var3, const QVariant var4);
-    void set(const char * qfi, const char * filename, const int fileline,
-             const Level level, const Flags flags, const QString format,
-             const QVariantList vars);
-
-    void set(const Level level);
-    void set(const char * qfi, const char * filename, const int fileline);
-    void set(const Flags flags, const QString format,
-             const QVariantList vars);
-    void set(const Key &key, const Uid uid=Uid());
-    void set(const Uid sender,  const Uid receiver);
 
 public: // static
     static QIcon icon(const Level level);
-    static QtMsgType qmt(const Level level);
-
 
 private:
     void ctor();
     void formatMessage();
 
 private: // static
+    static QtMsgType qmt(const Level level);
     static void loadIcons();
     static QIcon levelIcon(const Level level);
 
@@ -177,51 +144,32 @@ private: // static
     static QList<QIcon> smLevelIcons;
 
     // ====================== PROPERTIES ===================
-protected:
-    Uid m_uid;
-    NanosecondsElapsed m_msgNano;
+private:
     Uid m_msgUid;
-    Key m_msgKey;
     Level m_msgLevel;
     Flags m_msgFlags;
     Uid m_senderUid;
     Uid m_receiverUid;
-    EpochTime m_sentTime;
-    EpochTime m_receivedTime;
+    QDateTime m_createdTime;
+    QDateTime m_sentTime;
+    QDateTime m_receivedTime;
     QString m_text;
     QString m_format;
-    FunctionInfo m_functionInfo;
     QVariantList m_variantList;
     VariableMap m_variableMap;
-    Q_PROPERTY(Uid uid READ uid CONSTANT FINAL)
-    Q_PROPERTY(NanosecondsElapsed msgNano READ msgNano CONSTANT FINAL)
     Q_PROPERTY(Uid msgUid READ msgUid CONSTANT FINAL)
-    Q_PROPERTY(Key msgKey READ msgKey CONSTANT FINAL)
     Q_PROPERTY(Level msgLevel READ msgLevel CONSTANT FINAL)
     Q_PROPERTY(Flags msgFlags READ msgFlags CONSTANT FINAL)
     Q_PROPERTY(Uid senderUid READ senderUid CONSTANT FINAL)
     Q_PROPERTY(Uid receiverUid READ receiverUid CONSTANT FINAL)
-    Q_PROPERTY(EpochTime sentTime READ sentTime CONSTANT FINAL)
-    Q_PROPERTY(EpochTime receivedTime READ receivedTime CONSTANT FINAL)
+    Q_PROPERTY(QDateTime createdTime READ createdTime CONSTANT FINAL)
+    Q_PROPERTY(QDateTime sentTime READ sentTime CONSTANT FINAL)
+    Q_PROPERTY(QDateTime receivedTime READ receivedTime CONSTANT FINAL)
     Q_PROPERTY(QString text READ text CONSTANT FINAL)
-    Q_PROPERTY(QString format READ format CONSTANT FINAL)
-    Q_PROPERTY(FunctionInfo functionInfo READ functionInfo CONSTANT FINAL)
 public:
-    Uid uid() const
-    {
-        return m_uid;
-    }
-    NanosecondsElapsed msgNano() const
-    {
-        return m_msgNano;
-    }
     Uid msgUid() const
     {
         return m_msgUid;
-    }
-    Key msgKey() const
-    {
-        return m_msgKey;
     }
     Level msgLevel() const
     {
@@ -239,11 +187,15 @@ public:
     {
         return m_receiverUid;
     }
-    EpochTime sentTime() const
+    QDateTime createdTime() const
+    {
+        return m_createdTime;
+    }
+    QDateTime sentTime() const
     {
         return m_sentTime;
     }
-    EpochTime receivedTime() const
+    QDateTime receivedTime() const
     {
         return m_receivedTime;
     }
@@ -254,9 +206,5 @@ public:
     QString format() const
     {
         return m_format;
-    }
-    FunctionInfo functionInfo() const
-    {
-        return m_functionInfo;
     }
 };

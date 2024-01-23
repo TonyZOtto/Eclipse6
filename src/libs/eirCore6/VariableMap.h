@@ -2,25 +2,8 @@
 #pragma once
 #include "eirCore6.h"
 
-#include <Types.h>
-
-#include "Key.h"
-#include "Variable.h"
-
 class EIRCORE6_EXPORT VariableMap
 {
-public: // ctors
+public:
     VariableMap();
-
-public: // const
-    bool isEmpty();
-    Count count();
-    bool contains(const Key &key);
-    Variable variable(const Key &key);
-    Value value(const Key &key);
-
-public: // non-const
-
-private:
-    QMap<Key, Variable> mKeyVariableMap;
 };

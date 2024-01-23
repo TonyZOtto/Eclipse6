@@ -19,11 +19,13 @@ message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
 SOURCES += \
-    BaseMachine.cpp \
     FunctionInfo.cpp \
     Key.cpp \
     KeySeg.cpp \
     KeySegList.cpp \
+    Log.cpp \
+    LogContext.cpp \
+    LogMessage.cpp \
     Message.cpp \
     Value.cpp \
     Variable.cpp \
@@ -32,14 +34,16 @@ SOURCES += \
     eirCore6.cpp
 
 HEADERS += \
-    BaseMachine.h \
     FunctionInfo.h \
     Key.h \
     KeySeg.h \
     KeySegList.h \
+    Log.h \
+    LogContext.h \
+    LogMacros.h \
+    LogMessage.h \
     Message.h \
     MetaTypeSample.h \
-    Return.h \
     SafeList.h \
     Value.h \
     Variable.h \

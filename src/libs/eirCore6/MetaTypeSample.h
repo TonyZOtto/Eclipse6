@@ -11,8 +11,8 @@ public:
 private:
     int mInt;
 
-    /* ======================== QMetaType-required below */
-public: // QMetaType
+    // QMetaType-required below
+public:
     MetaTypeSample() = default;
     MetaTypeSample(const MetaTypeSample &other) = default;
     ~MetaTypeSample() = default;

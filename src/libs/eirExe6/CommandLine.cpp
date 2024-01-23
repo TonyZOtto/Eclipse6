@@ -2,11 +2,11 @@
 
 #include <QCoreApplication>
 
-#include "ExeSupport.h"
+//#include "ExeSupport.h"
 
 // --------------------- ctors ---------------------
 
-CommandLine::CommandLine(ExeSupport *parent)
+CommandLine::CommandLine(QObject *parent)
     : QObject{parent}
     , mFlags($null)
 {
@@ -14,7 +14,7 @@ CommandLine::CommandLine(ExeSupport *parent)
     ctor();
 }
 
-CommandLine::CommandLine(const Flags f, ExeSupport *parent)
+CommandLine::CommandLine(const Flags f, QObject *parent)
     : QObject{parent}
     , mFlags(f)
 {

@@ -34,4 +34,5 @@ signals:
 private:
     ConsoleStreamDisplay * mpDisplay;
     const ConsoleMessage cmMessage;
+    QGridLayout * mpLayout=nullptr;
 };

@@ -1,18 +1,28 @@
 #include "Message.h"
 
-#include <QVariant>
-
-
 QList<QIcon> Message::smLevelIcons; // TODO Use SafeList
 
 Message::Message()
 {
+    ctor();
 }
 
-Message::Message(const char *qfi, const char *filename, const int fileline,
-            const Level level, const Flags flags, const char *text)
+Message::Message(const Level level, const QString text, const Flags f)
 {
-    set(qfi, filename, fileline, level, flags, text);
+    ctor();
+    m_msgLevel = level,
+        m_msgFlags = f,
+        m_text = text;
+}
+
+Message::Message(const Level level, const QString format, const QVariantList vars, const Flags f)
+{
+    ctor();
+    m_msgLevel = level,
+        m_msgFlags = f,
+        m_format = format,
+        m_variantList = vars;
+    formatMessage();
 }
 
 QPixmap Message::iconPixmap(const QSize &sz) const
@@ -20,74 +30,6 @@ QPixmap Message::iconPixmap(const QSize &sz) const
     return icon(m_msgLevel).pixmap(sz);
 }
 
-QtMsgType Message::qmt() const
-{
-    return qmt(msgLevel());
-}
-
-
-void Message::set(const char *qfi, const char *filename, const int fileline,
-        const Level level, const Flags flags, const char *text)
-{
-    set(qfi, filename, fileline, level, flags, text, QVariantList());
-}
-
-void Message::set(const Uid sender, const Uid receiver)
-{
-    m_senderUid = sender, m_receiverUid = receiver;
-}
-
-void Message::set(char *qfi, char *filename, const int fileline,
-        const Level level, const Flags flags, const QString format,
-        const QVariant var1, const QVariant var2,
-        const QVariant var3, const QVariant var4)
-{
-    QVariantList tVars;
-    if (var4.isValid()) tVars << var1 << var2 << var3 << var4;
-    else if (var3.isValid()) tVars << var1 << var2 << var3;
-    else if (var2.isValid()) tVars << var1 << var2;
-    else if (var1.isValid()) tVars << var1;
-    set(qfi, filename, fileline, level, flags, format, tVars);
-}
-
-void Message::set(const char *qfi, const char *filename, const int fileline,
-        const Level level, const Flags flags, const QString format,
-        const QVariantList vars)
-{
-    set(level);
-    set(qfi, filename, fileline);
-    set(flags, format, vars);
-}
-
-void Message::set(const Level level)
-{
-    m_uid = Uid(Uid::VersionTimebased);
-    m_msgNano.sample();
-    m_msgLevel = level;
-}
-
-void Message::set(const char *qfi, const char *filename, const int fileline)
-{
-    m_functionInfo.parse(qfi, filename, NULL, fileline);
-}
-
-void Message::set(const Flags flags, const QString format,
-                  const QVariantList vars)
-{
-    m_msgFlags = flags;
-    if (vars.isEmpty())
-    {
-        m_text = format;
-    }
-    else
-    {
-        m_format = format;
-        m_variantList = vars;
-        formatMessage();
-    }
-}
-
-// static
 QIcon Message::icon(const Level level)
 {
     QIcon result;
@@ -99,12 +41,12 @@ QIcon Message::icon(const Level level)
 
 void Message::ctor()
 {
-    m_msgNano.sample();
-    m_msgUid = Uid(Uid::VersionTimebased);
+    m_msgUid = Uid();
+    m_createdTime = QDateTime::currentDateTime(); // TODO ClockCalendar
     m_msgLevel = $nullLevel;
     m_msgFlags = $nullFlag;
-    m_senderUid = Uid();
-    m_receiverUid = Uid();
+    m_senderUid = Uid(true);
+    m_receiverUid = Uid(true);
     if (smLevelIcons.isEmpty())
         loadIcons();
 }
@@ -122,7 +64,7 @@ QtMsgType Message::qmt(const Level level)
     return result;
 }
 
-// private static
+// static
 void Message::loadIcons()
 {
     smLevelIcons.resize($maxLevel);
@@ -130,7 +72,6 @@ void Message::loadIcons()
   //      mLevelIcons[level] = levelIcon(level);
 }
 
-// private static
 QIcon Message::levelIcon(const Level level)
 {
     QIcon result;

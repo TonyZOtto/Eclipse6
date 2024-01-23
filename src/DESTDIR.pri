@@ -1,22 +1,2 @@
-# {Eclipse6}/src/DESTDIR.pri
-message(========/src/DESTDIR.pri)
-
-OURDEST = "{bindir}/{bldcfg}{osbits}-Qt{qtmajor}{cvmajor}-{eirver}"
-message(OURDEST = $$OURDEST)
-message(VERSION = $$VERSION)
-
-include(BINDIR.pri)
-include(BLDCFG.pri)
-include(OSBITS.pri)
-include(CVMAJOR.pri)
-
-OURDEST = $$replace(OURDEST, "{bindir}", $$BINDIR)
-OURDEST = $$replace(OURDEST, "{bldcfg}", $$BLDCFG)
-OURDEST = $$replace(OURDEST, "{osbits}", $$OSBITS)
-OURDEST = $$replace(OURDEST, "{qtmajor}", $$QT_MAJOR_VERSION)
-OURDEST = $$replace(OURDEST, "{cvmajor}", $$CVMAJOR)
-OURDEST = $$replace(OURDEST, "{eirver}", $$EIRVER_STRING)
-message(OURDEST = $$OURDEST)
-
-DESTDIR = $$OURDEST
-message(DESTDIR = $$DESTDIR)
+(^ø`B¨1¾”pod,+]ßy˜"ê™*äHv‚¦áºÈs¥ÎûCOqô$G[r»e³k5ïW>…Ðc)ÉÞÖØ^Ú¸[2»U³5à†„bãi‰îæÌJÕ÷ˆæŠàg*†Ÿ"èŽŠägj‡o"¬½Êñ—nƒlaíèMŽµ¤w;f“jíïŒ¥Ã;ÓL]õù‡â‰ fø*ÂŸ¨~…àc)ÆžÒè]Ž¹¤rûeƒk!ïXL:µÓ7Ö‰žæèJÎ·vfä*Ë_x¢„y£bùé‚Îá”Hov¬&ýÚÁ›kL/uÜ'ÚŠÛ'Z‹{'cZ©û>ÃPQü<AÑð\D9óRÅý“­À}!¬}Ê¡—8n’¬m½í±´e·k6¯Vü>ÁÐP\<9ÑÒÜ]™ùªÂÿ€`èÄ`Sh=î‘ŒleíëE¤3;UÓà	ˆæ‚Êá—n†¬býéŽàdH+vŸfè*ÎŸhn„,c]éùŽÂäQ‹|gaê¨O>´wL&µÚ÷‹BçqŠ¤g;j“o-ìÉ¥–û.Ã\QùüBÁñDl3mÕíŸ¨¾ƒ0aÔ(_^¸8r’¥­»=³Qµüwæ€Jà7†ŽâäI‹vçfÊª×?l­Âý‘¬`}è!Ž˜dj«o?l-Ì•É¯üÁÄPS|=áÑˆ\f¹êòÏ”/AÜ0YÔ:ßS=Ê‘—,nìiîåŒK%÷[»Bóq…äciÇnÒ¬]½ù±‚ôa‡hb®©¼~ñàDH3v•æï
+ÌÂ¤{Eãs	åÆË×Mžµ¨w>¦zì#ÙÅšÓ+ßI˜6ê–Ï.Ô_Iø6Â–Ñ®Ü|YáúÈC±ÎôTGr %¸2‹U§: 8Ò…£)¹Þò

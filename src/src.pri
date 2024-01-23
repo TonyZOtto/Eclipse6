@@ -1,5 +1,2 @@
-# {Eclipse6}/src/src.pri
-message(^^^^^^^^/src/src.pri)
-
-include(version.pri)
-
+:™Ó*İß˜
+ê‡"„£Jù÷Æ’àmˆ-¦ºé³õÄGrå¥‹;'SZ½û1ƒTaÿh@.°t	çFÊ²×5—(n¬h}î¡Œxeâ«	¿

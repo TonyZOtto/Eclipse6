@@ -1,8 +1,1 @@
-TEMPLATE = subdirs
-
-SUBDIRS += \
-    console \
-    desktop \
-    libs \
-	
-	
+Næ´J÷w¦‚úáƒaÆ¨Rş½€q $xb‹i§nú¬C=ñÑ„\cyéâÎÉ”Vï~Ì UØ?,]Â¹‘²ìuç%Š›'+ZŸ{(#^™øjÂ¯

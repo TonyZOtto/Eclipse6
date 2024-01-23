@@ -37,20 +37,8 @@ SOURCES += \
     ConsoleStreamDisplay.cpp \
     ConsoleWindowApp.cpp \
     ExeSupport.cpp \
-    Log.cpp \
-    LogCacheBase.cpp \
-    LogCacheFiles.cpp \
-    LogEngine.cpp \
-    LogFormatBase.cpp \
-    LogFormatContextual.cpp \
-    LogMessageQueue.cpp \
-    LogOutputBase.cpp \
-    LogOutputConsole.cpp \
-    LogOutputTextFile.cpp \
-    LogOutputTroll.cpp \
     Settings.cpp \
     SignalRecipient.cpp \
-    UidManager.cpp \
     eirExe6.cpp
 
 HEADERS += \
@@ -68,21 +56,8 @@ HEADERS += \
     ConsoleStreamDisplay.h \
     ConsoleWindowApp.h \
     ExeSupport.h \
-    Log.h \
-    LogCacheBase.h \
-    LogCacheFiles.h \
-    LogEngine.h \
-    LogFormatBase.h \
-    LogFormatContextual.h \
-    LogMacros.h \
-    LogMessageQueue.h \
-    LogOutputBase.h \
-    LogOutputConsole.h \
-    LogOutputTextFile.h \
-    LogOutputTroll.h \
     Settings.h \
     SignalRecipient.h \
-    UidManager.h \
     eirExe6_global.h \
     eirExe6.h \
     eirExe6_precompiled.h
