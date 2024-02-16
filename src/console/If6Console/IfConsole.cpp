@@ -5,9 +5,9 @@
 #include <QCoreApplication>
 
 IfConsole::IfConsole(int &argc, char **argv)
-    : ConsoleApp(argc, argv)
+//    : ConsoleApp(argc, argv)
 {
-
+    Q_UNUSED(argc); Q_UNUSED(argv);
 }
 
 void IfConsole::start()

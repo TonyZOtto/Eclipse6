@@ -1,5 +1,5 @@
 # {Eclipse6}/src/BINDIR.pri
-BINDIR = "/bin"
+BINDIR = "../../../../../bin"
 message(............/src/BINDIR.pri = $$BINDIR)
 
 

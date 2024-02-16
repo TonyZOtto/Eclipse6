@@ -3,9 +3,9 @@
 
 #include <QObject>
 
-#include <ConsoleApp.h>
+//#include <ConsoleApp.h>
 
-class IfConsole : public ConsoleApp
+class IfConsole : public QObject
 {
     Q_OBJECT
 public:

@@ -1,16 +1,19 @@
-# {Eclipse6}/root/src/libs/eirBase6/eirBase6.pri
-message(/root/src/libs/eirBase6/eirBase6.pri)
+# {Eclipse6}/src/libs/eirBase6/eirBase6.pro
+message(/src/libs/eirBase6/eirBase6.pro)
 
-QT *= core gui
+QT *= core
+QT *= gui
 TEMPLATE = lib
 TARGET = eirBase
 CONFIG += c++17
 DEFINES += EIRBASE6_LIBRARY
+DEFINES += QT_MESSAGELOGCONTEXT
 DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 include(../../version.pri)
 include(../../DESTDIR.pri)
 include(../libs.pri)
+message(BINDIR = $$BINDIR)
 message(DESTDIR = $$DESTDIR)
 message(TARGET = $$TARGET)
 
